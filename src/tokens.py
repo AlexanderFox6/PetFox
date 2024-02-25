@@ -27,26 +27,15 @@ keywords = {
     'while': 'KEYWORD',
     'for': 'KEYWORD',
     'pet': 'KEYWORD',  # var/let
-    'fox': 'KEYWORD',  # const
+    'fox': 'KEYWORD',
+    'glorp': 'KEYWORD'  # const
 }
 
-# set glorp as the function creator keyword
-function_keyword = 'glorp'
-keywords[function_keyword] = 'KEYWORD'
-
-# tokens for parentheses and double quotes
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_DOUBLEQUOTE = r'"'
-
 # rules for keywords
-
-
 def t_KEYWORD(t):
     r'(if|else|while|for|pet|fox|glorp)\b'
     t.type = keywords.get(t.value, 'IDENTIFIER')
     return t
-
 
 # Special symbols
 t_ASSIGN = r'='
@@ -54,40 +43,33 @@ t_MATH_OP = r'[+\-*/]'
 t_COMPARISON_OP = r'(==|!=|<|>|<=|>=)'
 t_LOGICAL_OP = r'(and|or|not)'
 t_SEPARATOR = r':'
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
+t_DOUBLEQUOTE = r'"'
 
 # Strings
-
-
 def t_STRING(t):
     r"'[^']*'"
     t.value = t.value[1:-1]
     return t
 
 # comments
-
-
 def t_COMMENT(t):
     r"//.*"
     pass
-
 
 # ignored characters (whitespace and comments)
 t_ignore = ' \t'
 
 # Rule for newlines
-
-
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
 # Error handling rule
-
-
 def t_error(t):
     print(f"Illegal character '{t.value[0]}'")
     t.lexer.skip(1)
-
 
 # Lexer
 lexer = lex.lex()
@@ -102,7 +84,7 @@ if x == 7:
 else:
     x = 0
 glorp my_function:
-    print("This is a function")
+    print('This is a function')
 '''
 
 lexer.input(data)
