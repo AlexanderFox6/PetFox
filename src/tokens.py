@@ -17,7 +17,7 @@ tokens = (
 
 # Regular expressions for tokens
 t_NUMBER = r'[0-7]+'  # Base 8 numbers
-t_IDENTIFIER = r'[a-zA-Z_][a-zA-Z0-9_]*'
+t_IDENTIFIER = r'[a-zA-Z_][a-zA-Z0-7_]*'
 
 # Keywords
 keywords = {
@@ -33,10 +33,13 @@ keywords = {
 }
 
 # rules for keywords
+
+
 def t_KEYWORD(t):
     r'(if|else|while|for|pet|fox|glorp|print|return)\b'
     t.type = keywords.get(t.value, 'IDENTIFIER')
     return t
+
 
 # Special symbols
 t_ASSIGN = r'='
@@ -48,44 +51,57 @@ t_LPAREN = r'\('
 t_RPAREN = r'\)'
 
 # Strings
+
+
 def t_STRING(t):
     r"'[^']*'"
     t.value = t.value[1:-1]
     return t
 
 # comments
+
+
 def t_COMMENT(t):
     r"//.*"
     pass
+
 
 # ignored characters (whitespace and comments)
 t_ignore = ' \t'
 
 # Rule for newlines
+
+
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
 # Error handling rule
+
+
 def t_error(t):
     print(f"Illegal character '{t.value[0]}'")
     t.lexer.skip(1)
+
 
 # Lexer
 lexer = lex.lex()
 
 # Testing the lexer
 data = '''
-glorp my_function:
-    pet x = 7
-    fox unchanging = 100
+glorp my_function(y):
+    pet x = 5
+    fox unchanging = 144
     pet s = 'hello'
     print(s)
-    if x == 7:
+    if x == 5:
         x = x + 1
     else:
+        y - 2
         x = 0
     return x
+
+my_function(17)
 '''
 
 lexer.input(data)
