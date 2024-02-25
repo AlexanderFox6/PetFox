@@ -12,8 +12,7 @@ tokens = (
     'SEPARATOR',
     'STRING',
     'LPAREN',
-    'RPAREN',
-    'DOUBLEQUOTE'
+    'RPAREN'
 )
 
 # Regular expressions for tokens
@@ -28,12 +27,14 @@ keywords = {
     'for': 'KEYWORD',
     'pet': 'KEYWORD',  # var/let
     'fox': 'KEYWORD',  # const
-    'glorp': 'KEYWORD'
+    'glorp': 'KEYWORD',
+    'print': 'KEYWORD',
+    'return': 'KEYWORD'
 }
 
 # rules for keywords
 def t_KEYWORD(t):
-    r'(if|else|while|for|pet|fox|glorp)\b'
+    r'(if|else|while|for|pet|fox|glorp|print|return)\b'
     t.type = keywords.get(t.value, 'IDENTIFIER')
     return t
 
@@ -75,15 +76,16 @@ lexer = lex.lex()
 
 # Testing the lexer
 data = '''
-pet x = 7
-fox unchanging = 100
-pet s = 'hello'
-if x == 7:
-    x = x + 1
-else:
-    x = 0
 glorp my_function:
-    print('This is a function')
+    pet x = 7
+    fox unchanging = 100
+    pet s = 'hello'
+    print(s)
+    if x == 7:
+        x = x + 1
+    else:
+        x = 0
+    return x
 '''
 
 lexer.input(data)
