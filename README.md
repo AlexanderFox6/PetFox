@@ -19,8 +19,12 @@ This is the creation of a new programming language that operates in base eight. 
     'else': 'KEYWORD',
     'while': 'KEYWORD',
     'for': 'KEYWORD',
-    'pet': 'KEYWORD',  # var/let
-    'fox': 'KEYWORD',  # const
+    'pet': 'KEYWORD',
+    'fox': 'KEYWORD',
     'glorp': 'KEYWORD',
     'print': 'KEYWORD',
     'return': 'KEYWORD'
+
+    The keyword, pet, is used for creating variables
+    The keyword, fox, is used for defining constants
+    The keyword, glorp, is used for function definitions
