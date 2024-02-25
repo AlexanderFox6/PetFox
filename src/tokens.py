@@ -6,7 +6,7 @@ tokens = (
     'IDENTIFIER',
     'KEYWORD',
     'ASSIGN',
-    'ARITHMETIC_OP',
+    'MATH_OP',
     'COMPARISON_OP',
     'LOGICAL_OP',
     'SEPARATOR',
@@ -40,7 +40,7 @@ def t_KEYWORD(t):
 
 # special symbols
 t_ASSIGN = r'='
-t_ARITHMETIC_OP = r'[+\-*/]'
+t_MATH_OP = r'[+\-*/]'
 t_COMPARISON_OP = r'(==|!=|<|>|<=|>=)'
 t_LOGICAL_OP = r'(and|or|not)'
 t_SEPARATOR = r':'
@@ -52,6 +52,13 @@ def t_STRING(t):
     r"'[^']*'"
     t.value = t.value[1:-1]
     return t
+
+# comments
+
+
+def t_COMMENT(t):
+    r"//.*"
+    pass
 
 
 # ignored characters (whitespace and comments)
