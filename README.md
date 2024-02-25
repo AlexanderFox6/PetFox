@@ -28,3 +28,49 @@ This is the creation of a new programming language that operates in base eight. 
     The keyword, pet, is used for creating variables
     The keyword, fox, is used for defining constants
     The keyword, glorp, is used for function definitions
+
+### Special Symbols:
+    t_ASSIGN = r'='
+    t_MATH_OP = r'[+\-*/]'
+    t_COMPARISON_OP = r'(==|!=|<|>|<=|>=)'
+    t_LOGICAL_OP = r'(and|or|not)'
+    t_SEPARATOR = r':'
+    t_LPAREN = r'\('
+    t_RPAREN = r'\)'
+
+### Rules:
+    Keywords:
+    def t_KEYWORD(t):
+        r'(if|else|while|for|pet|fox|glorp|print|return)\b'
+        t.type = keywords.get(t.value, 'IDENTIFIER')
+        return t
+
+    Strings:
+    def t_STRING(t):
+        r"'[^']*'"
+        t.value = t.value[1:-1]
+        return t
+
+    Comments:
+    def t_COMMENT(t):
+        r"//.*"
+        pass
+
+    New Lines:
+    def t_newline(t):
+        r'\n+'
+        t.lexer.lineno += len(t.value)
+
+    Error Handling:
+    def t_error(t):
+        print(f"Illegal character '{t.value[0]}'")
+        t.lexer.skip(1)
+
+    
+
+
+
+
+
+
+    
