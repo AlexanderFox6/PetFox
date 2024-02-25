@@ -27,8 +27,8 @@ keywords = {
     'while': 'KEYWORD',
     'for': 'KEYWORD',
     'pet': 'KEYWORD',  # var/let
-    'fox': 'KEYWORD',
-    'glorp': 'KEYWORD'  # const
+    'fox': 'KEYWORD',  # const
+    'glorp': 'KEYWORD'
 }
 
 # rules for keywords
@@ -45,7 +45,6 @@ t_LOGICAL_OP = r'(and|or|not)'
 t_SEPARATOR = r':'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_DOUBLEQUOTE = r'"'
 
 # Strings
 def t_STRING(t):
