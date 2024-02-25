@@ -1,0 +1,9 @@
+glorp my_function():
+    pet x = 7
+    fox unchanging = 100
+    pet s = 'hello'
+    if x == 7:
+        x = x + 1
+    else:
+        x = 0
+    print('This is a function')
