@@ -1,6 +1,6 @@
 import ply.lex as lex
 
-# token names
+# Token names
 tokens = (
     'NUMBER',
     'IDENTIFIER',
@@ -10,72 +10,71 @@ tokens = (
     'COMPARISON_OP',
     'LOGICAL_OP',
     'SEPARATOR',
-    'STRING'
-
+    'STRING',
+    'LPAREN',
+    'RPAREN',
+    'DOUBLEQUOTE'
 )
 
-# regular expressions for tokens
+# Regular expressions for tokens
 t_NUMBER = r'[0-7]+'  # Base 8 numbers
 t_IDENTIFIER = r'[a-zA-Z_][a-zA-Z0-9_]*'
 
-# keywords
+# Keywords
 keywords = {
     'if': 'KEYWORD',
     'else': 'KEYWORD',
     'while': 'KEYWORD',
     'for': 'KEYWORD',
     'pet': 'KEYWORD',  # var/let
-    'fox': 'KEYWORD'  # const
-    # We will need more here but this is what i started with
+    'fox': 'KEYWORD',  # const
 }
 
-# Define rules for keywords
+# set glorp as the function creator keyword
+function_keyword = 'glorp'
+keywords[function_keyword] = 'KEYWORD'
 
+# tokens for parentheses and double quotes
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
+t_DOUBLEQUOTE = r'"'
 
+# rules for keywords
 def t_KEYWORD(t):
-    r'(if|else|while|for|pet|fox)\b'
+    r'(if|else|while|for|pet|fox|glorp)\b'
     t.type = keywords.get(t.value, 'IDENTIFIER')
     return t
 
-
-# special symbols
+# Special symbols
 t_ASSIGN = r'='
 t_ARITHMETIC_OP = r'[+\-*/]'
 t_COMPARISON_OP = r'(==|!=|<|>|<=|>=)'
 t_LOGICAL_OP = r'(and|or|not)'
 t_SEPARATOR = r':'
 
-# strings
-
-
+# Strings
 def t_STRING(t):
     r"'[^']*'"
     t.value = t.value[1:-1]
     return t
 
-
-# ignored characters (whitespace and comments)
+# Ignored characters (whitespace and comments)
 t_ignore = ' \t'
 
-# rule for newlines
-
-
+# Rule for newlines
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
-# error handling rule
-
-
+# Error handling rule
 def t_error(t):
     print(f"Illegal character '{t.value[0]}'")
     t.lexer.skip(1)
 
-
-# lexer
+# Lexer
 lexer = lex.lex()
 
-# testing the lexer here
+# Testing the lexer
 data = '''
 pet x = 7
 fox unchanging = 100
@@ -84,12 +83,12 @@ if x == 7:
     x = x + 1
 else:
     x = 0
+glorp my_function:
+    print("This is a function")
 '''
 
 lexer.input(data)
 
-
-# tokenize the input and print tokens
-
+# Tokenize the input and print tokens
 for token in lexer:
     print(token)
