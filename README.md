@@ -66,11 +66,41 @@ This is the creation of a new programming language that operates in base eight. 
         print(f"Illegal character '{t.value[0]}'")
         t.lexer.skip(1)
 
+### Example Usage:
+    data = '''
+    glorp my_function(y):
+        pet x = 5
+        fox unchanging = 144
+        pet s = 'hello'
+        print(s)
+        if x == 5:
+            x = x + 1
+        else:
+            y - 2
+            x = 0
+        return x
     
+    my_function(17)
+    '''
+    
+    lexer.input(data)
+    
+    # Tokenize the input and print tokens
+    for token in lexer:
+        print(token)
 
-
-
-
+    The first 10 lines of output from this program are: 
+    LexToken(KEYWORD,'glorp',2,1)
+    LexToken(IDENTIFIER,'my_function',2,7)
+    LexToken(LPAREN,'(',2,18)
+    LexToken(IDENTIFIER,'y',2,19)
+    LexToken(RPAREN,')',2,20)
+    LexToken(SEPARATOR,':',2,21)
+    LexToken(KEYWORD,'pet',3,27)
+    LexToken(IDENTIFIER,'x',3,31)
+    LexToken(ASSIGN,'=',3,33)
+    LexToken(NUMBER,'5',3,35)
+    
 
 
     
