@@ -12,7 +12,8 @@ tokens = (
     'SEPARATOR',
     'STRING',
     'LPAREN',
-    'RPAREN'
+    'RPAREN',
+    'EOF'
 )
 
 # Regular expressions for tokens
@@ -82,6 +83,10 @@ def t_newline(t):
 def t_error(t):
     print(f"Illegal character '{t.value[0]}'")
     t.lexer.skip(1)
+
+
+def t_eof(t):
+    return None
 
 
 # Lexer
