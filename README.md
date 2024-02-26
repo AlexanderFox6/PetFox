@@ -6,6 +6,10 @@ Welcome to the PetFox programming language repository. PetFox is designed to hel
 
 Visit the [Language Documentation Wiki](https://github.com/AlexanderFox6/PetFox/wiki/PetFox-Documentation).
 
+## PetFox Tokens
+
+Visit the [PetFox Language Tokens](https://github.com/AlexanderFox6/PetFox/wiki/Tokens).
+
 ## Lexer with PLY-3.11
 
 PetFox is using PLY-3.11 for it's lexical analysis. PLY is python based.
