@@ -27,7 +27,7 @@ keywords = {
     'for': 'KEYWORD',
     'pet': 'KEYWORD',  # var/let
     'fox': 'KEYWORD',  # const
-    'glorp': 'KEYWORD',
+    'glorp': 'KEYWORD',  # function
     'print': 'KEYWORD',
     'return': 'KEYWORD'
 }
@@ -43,10 +43,10 @@ def t_KEYWORD(t):
 
 # Special symbols
 t_ASSIGN = r'='
-t_MATH_OP = r'[+\-*/]'
+t_MATH_OP = r'[+\-*/%]'
 t_COMPARISON_OP = r'(==|!=|<|>|<=|>=)'
 t_LOGICAL_OP = r'(and|or|not)'
-t_SEPARATOR = r':'
+t_SEPARATOR = r':|,'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 
@@ -89,7 +89,7 @@ lexer = lex.lex()
 
 # Testing the lexer
 data = '''
-glorp my_function(y):
+glorp my_function(a, b):
     pet x = 5
     fox unchanging = 144
     pet s = 'hello'
