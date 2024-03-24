@@ -1,0 +1,727 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ASSIGN_OP
+    BITWISE_OP
+    COMMENT
+    EOF
+    EXPONENT
+    LCURLY
+    LPAREN
+    RCURLY
+    RPAREN
+    SEPARATOR
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> assignment_statement
+Rule 2     statement -> if_statement
+Rule 3     statement -> while_statement
+Rule 4     statement -> expression_statement
+Rule 5     statement -> BREAK
+Rule 6     statement -> CONTINUE
+Rule 7     statement -> ELIF
+Rule 8     assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE
+Rule 9     if_statement -> if_clause NEWLINE statement NEWLINE
+Rule 10    if_clause -> KEYWORD expression
+Rule 11    while_statement -> while_clause NEWLINE statement NEWLINE
+Rule 12    while_clause -> KEYWORD expression
+Rule 13    expression_statement -> expression NEWLINE
+Rule 14    expression -> NUMBER
+Rule 15    expression -> FLOAT
+Rule 16    expression -> BOOLEAN
+Rule 17    expression -> CHAR
+Rule 18    expression -> IDENTIFIER
+Rule 19    expression -> STRING
+Rule 20    expression -> math_expression
+Rule 21    expression -> comparison_expression
+Rule 22    expression -> logical_expression
+Rule 23    math_expression -> expression MATH_OP expression
+Rule 24    comparison_expression -> expression COMPARISON_OP expression
+Rule 25    logical_expression -> expression LOGICAL_OP expression
+
+Terminals, with rules where they appear
+
+ASSIGN               : 8
+ASSIGN_OP            : 
+BITWISE_OP           : 
+BOOLEAN              : 16
+BREAK                : 5
+CHAR                 : 17
+COMMENT              : 
+COMPARISON_OP        : 24
+CONTINUE             : 6
+ELIF                 : 7
+EOF                  : 
+EXPONENT             : 
+FLOAT                : 15
+IDENTIFIER           : 8 18
+KEYWORD              : 10 12
+LCURLY               : 
+LOGICAL_OP           : 25
+LPAREN               : 
+MATH_OP              : 23
+NEWLINE              : 8 9 9 11 11 13
+NUMBER               : 14
+RCURLY               : 
+RPAREN               : 
+SEPARATOR            : 
+STRING               : 19
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment_statement : 1
+comparison_expression : 21
+expression           : 8 10 12 13 23 23 24 24 25 25
+expression_statement : 4
+if_clause            : 9
+if_statement         : 2
+logical_expression   : 22
+math_expression      : 20
+statement            : 9 11 0
+while_clause         : 11
+while_statement      : 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . assignment_statement
+    (2) statement -> . if_statement
+    (3) statement -> . while_statement
+    (4) statement -> . expression_statement
+    (5) statement -> . BREAK
+    (6) statement -> . CONTINUE
+    (7) statement -> . ELIF
+    (8) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (9) if_statement -> . if_clause NEWLINE statement NEWLINE
+    (11) while_statement -> . while_clause NEWLINE statement NEWLINE
+    (13) expression_statement -> . expression NEWLINE
+    (10) if_clause -> . KEYWORD expression
+    (12) while_clause -> . KEYWORD expression
+    (14) expression -> . NUMBER
+    (15) expression -> . FLOAT
+    (16) expression -> . BOOLEAN
+    (17) expression -> . CHAR
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . STRING
+    (20) expression -> . math_expression
+    (21) expression -> . comparison_expression
+    (22) expression -> . logical_expression
+    (23) math_expression -> . expression MATH_OP expression
+    (24) comparison_expression -> . expression COMPARISON_OP expression
+    (25) logical_expression -> . expression LOGICAL_OP expression
+
+    BREAK           shift and go to state 6
+    CONTINUE        shift and go to state 7
+    ELIF            shift and go to state 8
+    IDENTIFIER      shift and go to state 9
+    KEYWORD         shift and go to state 13
+    NUMBER          shift and go to state 14
+    FLOAT           shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    CHAR            shift and go to state 17
+    STRING          shift and go to state 18
+
+    statement                      shift and go to state 1
+    assignment_statement           shift and go to state 2
+    if_statement                   shift and go to state 3
+    while_statement                shift and go to state 4
+    expression_statement           shift and go to state 5
+    expression                     shift and go to state 10
+    if_clause                      shift and go to state 11
+    while_clause                   shift and go to state 12
+    math_expression                shift and go to state 19
+    comparison_expression          shift and go to state 20
+    logical_expression             shift and go to state 21
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> assignment_statement .
+
+    $end            reduce using rule 1 (statement -> assignment_statement .)
+    NEWLINE         reduce using rule 1 (statement -> assignment_statement .)
+
+
+state 3
+
+    (2) statement -> if_statement .
+
+    $end            reduce using rule 2 (statement -> if_statement .)
+    NEWLINE         reduce using rule 2 (statement -> if_statement .)
+
+
+state 4
+
+    (3) statement -> while_statement .
+
+    $end            reduce using rule 3 (statement -> while_statement .)
+    NEWLINE         reduce using rule 3 (statement -> while_statement .)
+
+
+state 5
+
+    (4) statement -> expression_statement .
+
+    $end            reduce using rule 4 (statement -> expression_statement .)
+    NEWLINE         reduce using rule 4 (statement -> expression_statement .)
+
+
+state 6
+
+    (5) statement -> BREAK .
+
+    $end            reduce using rule 5 (statement -> BREAK .)
+    NEWLINE         reduce using rule 5 (statement -> BREAK .)
+
+
+state 7
+
+    (6) statement -> CONTINUE .
+
+    $end            reduce using rule 6 (statement -> CONTINUE .)
+    NEWLINE         reduce using rule 6 (statement -> CONTINUE .)
+
+
+state 8
+
+    (7) statement -> ELIF .
+
+    $end            reduce using rule 7 (statement -> ELIF .)
+    NEWLINE         reduce using rule 7 (statement -> ELIF .)
+
+
+state 9
+
+    (8) assignment_statement -> IDENTIFIER . ASSIGN expression NEWLINE
+    (18) expression -> IDENTIFIER .
+
+    ASSIGN          shift and go to state 22
+    NEWLINE         reduce using rule 18 (expression -> IDENTIFIER .)
+    MATH_OP         reduce using rule 18 (expression -> IDENTIFIER .)
+    COMPARISON_OP   reduce using rule 18 (expression -> IDENTIFIER .)
+    LOGICAL_OP      reduce using rule 18 (expression -> IDENTIFIER .)
+
+
+state 10
+
+    (13) expression_statement -> expression . NEWLINE
+    (23) math_expression -> expression . MATH_OP expression
+    (24) comparison_expression -> expression . COMPARISON_OP expression
+    (25) logical_expression -> expression . LOGICAL_OP expression
+
+    NEWLINE         shift and go to state 23
+    MATH_OP         shift and go to state 24
+    COMPARISON_OP   shift and go to state 25
+    LOGICAL_OP      shift and go to state 26
+
+
+state 11
+
+    (9) if_statement -> if_clause . NEWLINE statement NEWLINE
+
+    NEWLINE         shift and go to state 27
+
+
+state 12
+
+    (11) while_statement -> while_clause . NEWLINE statement NEWLINE
+
+    NEWLINE         shift and go to state 28
+
+
+state 13
+
+    (10) if_clause -> KEYWORD . expression
+    (12) while_clause -> KEYWORD . expression
+    (14) expression -> . NUMBER
+    (15) expression -> . FLOAT
+    (16) expression -> . BOOLEAN
+    (17) expression -> . CHAR
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . STRING
+    (20) expression -> . math_expression
+    (21) expression -> . comparison_expression
+    (22) expression -> . logical_expression
+    (23) math_expression -> . expression MATH_OP expression
+    (24) comparison_expression -> . expression COMPARISON_OP expression
+    (25) logical_expression -> . expression LOGICAL_OP expression
+
+    NUMBER          shift and go to state 14
+    FLOAT           shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    CHAR            shift and go to state 17
+    IDENTIFIER      shift and go to state 30
+    STRING          shift and go to state 18
+
+    expression                     shift and go to state 29
+    math_expression                shift and go to state 19
+    comparison_expression          shift and go to state 20
+    logical_expression             shift and go to state 21
+
+state 14
+
+    (14) expression -> NUMBER .
+
+    NEWLINE         reduce using rule 14 (expression -> NUMBER .)
+    MATH_OP         reduce using rule 14 (expression -> NUMBER .)
+    COMPARISON_OP   reduce using rule 14 (expression -> NUMBER .)
+    LOGICAL_OP      reduce using rule 14 (expression -> NUMBER .)
+
+
+state 15
+
+    (15) expression -> FLOAT .
+
+    NEWLINE         reduce using rule 15 (expression -> FLOAT .)
+    MATH_OP         reduce using rule 15 (expression -> FLOAT .)
+    COMPARISON_OP   reduce using rule 15 (expression -> FLOAT .)
+    LOGICAL_OP      reduce using rule 15 (expression -> FLOAT .)
+
+
+state 16
+
+    (16) expression -> BOOLEAN .
+
+    NEWLINE         reduce using rule 16 (expression -> BOOLEAN .)
+    MATH_OP         reduce using rule 16 (expression -> BOOLEAN .)
+    COMPARISON_OP   reduce using rule 16 (expression -> BOOLEAN .)
+    LOGICAL_OP      reduce using rule 16 (expression -> BOOLEAN .)
+
+
+state 17
+
+    (17) expression -> CHAR .
+
+    NEWLINE         reduce using rule 17 (expression -> CHAR .)
+    MATH_OP         reduce using rule 17 (expression -> CHAR .)
+    COMPARISON_OP   reduce using rule 17 (expression -> CHAR .)
+    LOGICAL_OP      reduce using rule 17 (expression -> CHAR .)
+
+
+state 18
+
+    (19) expression -> STRING .
+
+    NEWLINE         reduce using rule 19 (expression -> STRING .)
+    MATH_OP         reduce using rule 19 (expression -> STRING .)
+    COMPARISON_OP   reduce using rule 19 (expression -> STRING .)
+    LOGICAL_OP      reduce using rule 19 (expression -> STRING .)
+
+
+state 19
+
+    (20) expression -> math_expression .
+
+    NEWLINE         reduce using rule 20 (expression -> math_expression .)
+    MATH_OP         reduce using rule 20 (expression -> math_expression .)
+    COMPARISON_OP   reduce using rule 20 (expression -> math_expression .)
+    LOGICAL_OP      reduce using rule 20 (expression -> math_expression .)
+
+
+state 20
+
+    (21) expression -> comparison_expression .
+
+    NEWLINE         reduce using rule 21 (expression -> comparison_expression .)
+    MATH_OP         reduce using rule 21 (expression -> comparison_expression .)
+    COMPARISON_OP   reduce using rule 21 (expression -> comparison_expression .)
+    LOGICAL_OP      reduce using rule 21 (expression -> comparison_expression .)
+
+
+state 21
+
+    (22) expression -> logical_expression .
+
+    NEWLINE         reduce using rule 22 (expression -> logical_expression .)
+    MATH_OP         reduce using rule 22 (expression -> logical_expression .)
+    COMPARISON_OP   reduce using rule 22 (expression -> logical_expression .)
+    LOGICAL_OP      reduce using rule 22 (expression -> logical_expression .)
+
+
+state 22
+
+    (8) assignment_statement -> IDENTIFIER ASSIGN . expression NEWLINE
+    (14) expression -> . NUMBER
+    (15) expression -> . FLOAT
+    (16) expression -> . BOOLEAN
+    (17) expression -> . CHAR
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . STRING
+    (20) expression -> . math_expression
+    (21) expression -> . comparison_expression
+    (22) expression -> . logical_expression
+    (23) math_expression -> . expression MATH_OP expression
+    (24) comparison_expression -> . expression COMPARISON_OP expression
+    (25) logical_expression -> . expression LOGICAL_OP expression
+
+    NUMBER          shift and go to state 14
+    FLOAT           shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    CHAR            shift and go to state 17
+    IDENTIFIER      shift and go to state 30
+    STRING          shift and go to state 18
+
+    expression                     shift and go to state 31
+    math_expression                shift and go to state 19
+    comparison_expression          shift and go to state 20
+    logical_expression             shift and go to state 21
+
+state 23
+
+    (13) expression_statement -> expression NEWLINE .
+
+    $end            reduce using rule 13 (expression_statement -> expression NEWLINE .)
+    NEWLINE         reduce using rule 13 (expression_statement -> expression NEWLINE .)
+
+
+state 24
+
+    (23) math_expression -> expression MATH_OP . expression
+    (14) expression -> . NUMBER
+    (15) expression -> . FLOAT
+    (16) expression -> . BOOLEAN
+    (17) expression -> . CHAR
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . STRING
+    (20) expression -> . math_expression
+    (21) expression -> . comparison_expression
+    (22) expression -> . logical_expression
+    (23) math_expression -> . expression MATH_OP expression
+    (24) comparison_expression -> . expression COMPARISON_OP expression
+    (25) logical_expression -> . expression LOGICAL_OP expression
+
+    NUMBER          shift and go to state 14
+    FLOAT           shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    CHAR            shift and go to state 17
+    IDENTIFIER      shift and go to state 30
+    STRING          shift and go to state 18
+
+    expression                     shift and go to state 32
+    math_expression                shift and go to state 19
+    comparison_expression          shift and go to state 20
+    logical_expression             shift and go to state 21
+
+state 25
+
+    (24) comparison_expression -> expression COMPARISON_OP . expression
+    (14) expression -> . NUMBER
+    (15) expression -> . FLOAT
+    (16) expression -> . BOOLEAN
+    (17) expression -> . CHAR
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . STRING
+    (20) expression -> . math_expression
+    (21) expression -> . comparison_expression
+    (22) expression -> . logical_expression
+    (23) math_expression -> . expression MATH_OP expression
+    (24) comparison_expression -> . expression COMPARISON_OP expression
+    (25) logical_expression -> . expression LOGICAL_OP expression
+
+    NUMBER          shift and go to state 14
+    FLOAT           shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    CHAR            shift and go to state 17
+    IDENTIFIER      shift and go to state 30
+    STRING          shift and go to state 18
+
+    expression                     shift and go to state 33
+    math_expression                shift and go to state 19
+    comparison_expression          shift and go to state 20
+    logical_expression             shift and go to state 21
+
+state 26
+
+    (25) logical_expression -> expression LOGICAL_OP . expression
+    (14) expression -> . NUMBER
+    (15) expression -> . FLOAT
+    (16) expression -> . BOOLEAN
+    (17) expression -> . CHAR
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . STRING
+    (20) expression -> . math_expression
+    (21) expression -> . comparison_expression
+    (22) expression -> . logical_expression
+    (23) math_expression -> . expression MATH_OP expression
+    (24) comparison_expression -> . expression COMPARISON_OP expression
+    (25) logical_expression -> . expression LOGICAL_OP expression
+
+    NUMBER          shift and go to state 14
+    FLOAT           shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    CHAR            shift and go to state 17
+    IDENTIFIER      shift and go to state 30
+    STRING          shift and go to state 18
+
+    expression                     shift and go to state 34
+    math_expression                shift and go to state 19
+    comparison_expression          shift and go to state 20
+    logical_expression             shift and go to state 21
+
+state 27
+
+    (9) if_statement -> if_clause NEWLINE . statement NEWLINE
+    (1) statement -> . assignment_statement
+    (2) statement -> . if_statement
+    (3) statement -> . while_statement
+    (4) statement -> . expression_statement
+    (5) statement -> . BREAK
+    (6) statement -> . CONTINUE
+    (7) statement -> . ELIF
+    (8) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (9) if_statement -> . if_clause NEWLINE statement NEWLINE
+    (11) while_statement -> . while_clause NEWLINE statement NEWLINE
+    (13) expression_statement -> . expression NEWLINE
+    (10) if_clause -> . KEYWORD expression
+    (12) while_clause -> . KEYWORD expression
+    (14) expression -> . NUMBER
+    (15) expression -> . FLOAT
+    (16) expression -> . BOOLEAN
+    (17) expression -> . CHAR
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . STRING
+    (20) expression -> . math_expression
+    (21) expression -> . comparison_expression
+    (22) expression -> . logical_expression
+    (23) math_expression -> . expression MATH_OP expression
+    (24) comparison_expression -> . expression COMPARISON_OP expression
+    (25) logical_expression -> . expression LOGICAL_OP expression
+
+    BREAK           shift and go to state 6
+    CONTINUE        shift and go to state 7
+    ELIF            shift and go to state 8
+    IDENTIFIER      shift and go to state 9
+    KEYWORD         shift and go to state 13
+    NUMBER          shift and go to state 14
+    FLOAT           shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    CHAR            shift and go to state 17
+    STRING          shift and go to state 18
+
+    if_clause                      shift and go to state 11
+    statement                      shift and go to state 35
+    assignment_statement           shift and go to state 2
+    if_statement                   shift and go to state 3
+    while_statement                shift and go to state 4
+    expression_statement           shift and go to state 5
+    expression                     shift and go to state 10
+    while_clause                   shift and go to state 12
+    math_expression                shift and go to state 19
+    comparison_expression          shift and go to state 20
+    logical_expression             shift and go to state 21
+
+state 28
+
+    (11) while_statement -> while_clause NEWLINE . statement NEWLINE
+    (1) statement -> . assignment_statement
+    (2) statement -> . if_statement
+    (3) statement -> . while_statement
+    (4) statement -> . expression_statement
+    (5) statement -> . BREAK
+    (6) statement -> . CONTINUE
+    (7) statement -> . ELIF
+    (8) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (9) if_statement -> . if_clause NEWLINE statement NEWLINE
+    (11) while_statement -> . while_clause NEWLINE statement NEWLINE
+    (13) expression_statement -> . expression NEWLINE
+    (10) if_clause -> . KEYWORD expression
+    (12) while_clause -> . KEYWORD expression
+    (14) expression -> . NUMBER
+    (15) expression -> . FLOAT
+    (16) expression -> . BOOLEAN
+    (17) expression -> . CHAR
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . STRING
+    (20) expression -> . math_expression
+    (21) expression -> . comparison_expression
+    (22) expression -> . logical_expression
+    (23) math_expression -> . expression MATH_OP expression
+    (24) comparison_expression -> . expression COMPARISON_OP expression
+    (25) logical_expression -> . expression LOGICAL_OP expression
+
+    BREAK           shift and go to state 6
+    CONTINUE        shift and go to state 7
+    ELIF            shift and go to state 8
+    IDENTIFIER      shift and go to state 9
+    KEYWORD         shift and go to state 13
+    NUMBER          shift and go to state 14
+    FLOAT           shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    CHAR            shift and go to state 17
+    STRING          shift and go to state 18
+
+    while_clause                   shift and go to state 12
+    statement                      shift and go to state 36
+    assignment_statement           shift and go to state 2
+    if_statement                   shift and go to state 3
+    while_statement                shift and go to state 4
+    expression_statement           shift and go to state 5
+    expression                     shift and go to state 10
+    if_clause                      shift and go to state 11
+    math_expression                shift and go to state 19
+    comparison_expression          shift and go to state 20
+    logical_expression             shift and go to state 21
+
+state 29
+
+    (10) if_clause -> KEYWORD expression .
+    (12) while_clause -> KEYWORD expression .
+    (23) math_expression -> expression . MATH_OP expression
+    (24) comparison_expression -> expression . COMPARISON_OP expression
+    (25) logical_expression -> expression . LOGICAL_OP expression
+
+  ! reduce/reduce conflict for NEWLINE resolved using rule 10 (if_clause -> KEYWORD expression .)
+    NEWLINE         reduce using rule 10 (if_clause -> KEYWORD expression .)
+    MATH_OP         shift and go to state 24
+    COMPARISON_OP   shift and go to state 25
+    LOGICAL_OP      shift and go to state 26
+
+  ! NEWLINE         [ reduce using rule 12 (while_clause -> KEYWORD expression .) ]
+
+
+state 30
+
+    (18) expression -> IDENTIFIER .
+
+    MATH_OP         reduce using rule 18 (expression -> IDENTIFIER .)
+    COMPARISON_OP   reduce using rule 18 (expression -> IDENTIFIER .)
+    LOGICAL_OP      reduce using rule 18 (expression -> IDENTIFIER .)
+    NEWLINE         reduce using rule 18 (expression -> IDENTIFIER .)
+
+
+state 31
+
+    (8) assignment_statement -> IDENTIFIER ASSIGN expression . NEWLINE
+    (23) math_expression -> expression . MATH_OP expression
+    (24) comparison_expression -> expression . COMPARISON_OP expression
+    (25) logical_expression -> expression . LOGICAL_OP expression
+
+    NEWLINE         shift and go to state 37
+    MATH_OP         shift and go to state 24
+    COMPARISON_OP   shift and go to state 25
+    LOGICAL_OP      shift and go to state 26
+
+
+state 32
+
+    (23) math_expression -> expression MATH_OP expression .
+    (23) math_expression -> expression . MATH_OP expression
+    (24) comparison_expression -> expression . COMPARISON_OP expression
+    (25) logical_expression -> expression . LOGICAL_OP expression
+
+  ! shift/reduce conflict for MATH_OP resolved as shift
+  ! shift/reduce conflict for COMPARISON_OP resolved as shift
+  ! shift/reduce conflict for LOGICAL_OP resolved as shift
+    NEWLINE         reduce using rule 23 (math_expression -> expression MATH_OP expression .)
+    MATH_OP         shift and go to state 24
+    COMPARISON_OP   shift and go to state 25
+    LOGICAL_OP      shift and go to state 26
+
+  ! MATH_OP         [ reduce using rule 23 (math_expression -> expression MATH_OP expression .) ]
+  ! COMPARISON_OP   [ reduce using rule 23 (math_expression -> expression MATH_OP expression .) ]
+  ! LOGICAL_OP      [ reduce using rule 23 (math_expression -> expression MATH_OP expression .) ]
+
+
+state 33
+
+    (24) comparison_expression -> expression COMPARISON_OP expression .
+    (23) math_expression -> expression . MATH_OP expression
+    (24) comparison_expression -> expression . COMPARISON_OP expression
+    (25) logical_expression -> expression . LOGICAL_OP expression
+
+  ! shift/reduce conflict for MATH_OP resolved as shift
+  ! shift/reduce conflict for COMPARISON_OP resolved as shift
+  ! shift/reduce conflict for LOGICAL_OP resolved as shift
+    NEWLINE         reduce using rule 24 (comparison_expression -> expression COMPARISON_OP expression .)
+    MATH_OP         shift and go to state 24
+    COMPARISON_OP   shift and go to state 25
+    LOGICAL_OP      shift and go to state 26
+
+  ! MATH_OP         [ reduce using rule 24 (comparison_expression -> expression COMPARISON_OP expression .) ]
+  ! COMPARISON_OP   [ reduce using rule 24 (comparison_expression -> expression COMPARISON_OP expression .) ]
+  ! LOGICAL_OP      [ reduce using rule 24 (comparison_expression -> expression COMPARISON_OP expression .) ]
+
+
+state 34
+
+    (25) logical_expression -> expression LOGICAL_OP expression .
+    (23) math_expression -> expression . MATH_OP expression
+    (24) comparison_expression -> expression . COMPARISON_OP expression
+    (25) logical_expression -> expression . LOGICAL_OP expression
+
+  ! shift/reduce conflict for MATH_OP resolved as shift
+  ! shift/reduce conflict for COMPARISON_OP resolved as shift
+  ! shift/reduce conflict for LOGICAL_OP resolved as shift
+    NEWLINE         reduce using rule 25 (logical_expression -> expression LOGICAL_OP expression .)
+    MATH_OP         shift and go to state 24
+    COMPARISON_OP   shift and go to state 25
+    LOGICAL_OP      shift and go to state 26
+
+  ! MATH_OP         [ reduce using rule 25 (logical_expression -> expression LOGICAL_OP expression .) ]
+  ! COMPARISON_OP   [ reduce using rule 25 (logical_expression -> expression LOGICAL_OP expression .) ]
+  ! LOGICAL_OP      [ reduce using rule 25 (logical_expression -> expression LOGICAL_OP expression .) ]
+
+
+state 35
+
+    (9) if_statement -> if_clause NEWLINE statement . NEWLINE
+
+    NEWLINE         shift and go to state 38
+
+
+state 36
+
+    (11) while_statement -> while_clause NEWLINE statement . NEWLINE
+
+    NEWLINE         shift and go to state 39
+
+
+state 37
+
+    (8) assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .
+
+    $end            reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
+    NEWLINE         reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
+
+
+state 38
+
+    (9) if_statement -> if_clause NEWLINE statement NEWLINE .
+
+    $end            reduce using rule 9 (if_statement -> if_clause NEWLINE statement NEWLINE .)
+    NEWLINE         reduce using rule 9 (if_statement -> if_clause NEWLINE statement NEWLINE .)
+
+
+state 39
+
+    (11) while_statement -> while_clause NEWLINE statement NEWLINE .
+
+    $end            reduce using rule 11 (while_statement -> while_clause NEWLINE statement NEWLINE .)
+    NEWLINE         reduce using rule 11 (while_statement -> while_clause NEWLINE statement NEWLINE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for MATH_OP in state 32 resolved as shift
+WARNING: shift/reduce conflict for COMPARISON_OP in state 32 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_OP in state 32 resolved as shift
+WARNING: shift/reduce conflict for MATH_OP in state 33 resolved as shift
+WARNING: shift/reduce conflict for COMPARISON_OP in state 33 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_OP in state 33 resolved as shift
+WARNING: shift/reduce conflict for MATH_OP in state 34 resolved as shift
+WARNING: shift/reduce conflict for COMPARISON_OP in state 34 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_OP in state 34 resolved as shift
+WARNING: reduce/reduce conflict in state 29 resolved using rule (if_clause -> KEYWORD expression)
+WARNING: rejected rule (while_clause -> KEYWORD expression) in state 29
+WARNING: Rule (while_clause -> KEYWORD expression) is never reduced
