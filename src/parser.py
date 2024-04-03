@@ -18,13 +18,48 @@ def p_assignment_statement(p):
     'assignment_statement : IDENTIFIER ASSIGN expression NEWLINE'
     p[0] = ('assignment', p[1], p[3])
 
+# def p_if_statement(p):
+#     '''
+#     if_statement : if_clause NEWLINE statement NEWLINE
+#                  | if_clause NEWLINE statement ELIF statement
+#     '''
+#     if len(p) == 5:
+#         p[0] = ('if', p[1], p[3])
+#     else:
+#         p[0] = ('if', p[1], p[3], p[5])
 def p_if_statement(p):
-    'if_statement : if_clause NEWLINE statement NEWLINE'
-    p[0] = ('if', p[1], p[3])
+    '''
+    if_statement : if_clause NEWLINE statement
+                 | if_clause NEWLINE statement NEWLINE ELIF NEWLINE statement
+                 | if_clause NEWLINE statement NEWLINE ELIF NEWLINE statement NEWLINE ELSE NEWLINE statement
+    '''
+    p[0] = ('if', p[1], *p[3:])
 
+
+# def p_if_clause(p):
+#     'if_clause : KEYWORD expression'
+#     p[0] = ('if_clause', p[1], p[2])
 def p_if_clause(p):
-    'if_clause : KEYWORD expression'
-    p[0] = ('if_clause', p[1], p[2])
+    '''
+    if_clause : KEYWORD expression
+              | KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+    '''
+    if len(p) == 3:
+        p[0] = ('if_clause', p[1], p[2])
+    else:
+        p[0] = ('if_clause', p[1], p[2], p[5])
+        
+def p_statement_list(p):
+    '''
+    statement_list : statement
+                   | statement_list statement
+    '''
+    if len(p) == 2:
+        p[0] = [p[1]]
+    else:
+        p[0] = p[1] + [p[2]]
+
+
 
 def p_while_statement(p):
     'while_statement : while_clause NEWLINE statement NEWLINE'
@@ -66,7 +101,25 @@ def p_logical_expression(p):
 
 # Rule for error handling
 def p_error(p):
-    print(f"Syntax error at line {p.lineno}")
+    print(f"Syntax error at line {p.lineno} with token {p.type}")
+
+    
+
 
 # Build the parser
 parser = yacc.yacc()
+
+# Test the parser
+data = """
+if x == 5:
+    print("x is 5")
+elif x > 5:
+    print("x is greater than 5")
+else:
+    print("x is less than 5")
+"""
+
+
+result = parser.parse(data)
+print(result)
+
