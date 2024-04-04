@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ASSIGN ASSIGN_OP BITWISE_OP BOOLEAN BREAK CHAR COMMENT COMPARISON_OP CONTINUE ELIF ELSE EOF EXPONENT FLOAT IDENTIFIER KEYWORD LCURLY LOGICAL_OP LPAREN MATH_OP NEWLINE NUMBER RCURLY RPAREN SEPARATOR STRING\n    statement : assignment_statement\n              | if_statement\n              | while_statement\n              | expression_statement\n              | BREAK\n              | CONTINUE\n              | ELIF\n    assignment_statement : IDENTIFIER ASSIGN expression NEWLINE\n    if_statement : if_clause NEWLINE statement\n                 | if_clause NEWLINE statement NEWLINE ELIF NEWLINE statement\n                 | if_clause NEWLINE statement NEWLINE ELIF NEWLINE statement NEWLINE ELSE NEWLINE statement\n    \n    if_clause : KEYWORD expression\n              | KEYWORD expression LCURLY NEWLINE statement_list RCURLY\n    \n    statement_list : statement\n                   | statement_list statement\n    while_statement : while_clause NEWLINE statement NEWLINEwhile_clause : KEYWORD expressionexpression_statement : expression NEWLINE\n    expression : NUMBER\n               | FLOAT\n               | BOOLEAN\n               | CHAR\n               | IDENTIFIER\n               | STRING\n               | math_expression\n               | comparison_expression\n               | logical_expression\n    math_expression : expression MATH_OP expressioncomparison_expression : expression COMPARISON_OP expressionlogical_expression : expression LOGICAL_OP expression'
+_lr_signature = 'leftMATH_OPleftCOMPARISON_OPleftLOGICAL_OPASSIGN ASSIGN_OP BITWISE_OP BOOLEAN BREAK CHAR COMMENT COMPARISON_OP CONTINUE ELIF ELSE EOF EXPONENT FLOAT IDENTIFIER KEYWORD LCURLY LOGICAL_OP LPAREN MATH_OP NEWLINE NUMBER RCURLY RPAREN SEPARATOR STRING\n    statement : assignment_statement\n              | if_statement\n              | while_statement\n              | expression_statement\n              | BREAK\n              | CONTINUE\n              | ELIF\n              | ELSE\n    assignment_statement : IDENTIFIER ASSIGN expression NEWLINE\n    if_statement : if_clause NEWLINE statement_list\n                 | if_clause NEWLINE statement_list ELIF NEWLINE statement_list\n                 | if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list\n    \n    if_clause : KEYWORD expression\n              | KEYWORD expression LCURLY NEWLINE statement_list RCURLY\n    \n    statement_list : statement\n                   | statement_list statement\n    while_statement : while_clause NEWLINE statement NEWLINEwhile_clause : KEYWORD expressionexpression_statement : expression NEWLINE\n    expression : literal\n               | LPAREN expression RPAREN\n               | expression MATH_OP expression\n               | expression COMPARISON_OP expression\n               | expression LOGICAL_OP expression\n    \n    literal : NUMBER\n            | FLOAT\n            | BOOLEAN\n            | CHAR\n            | IDENTIFIER\n            | STRING\n    '
     
-_lr_action_items = {'BREAK':([0,2,3,4,5,6,7,8,23,27,28,35,38,40,41,43,44,45,47,48,51,52,],[6,-1,-2,-3,-4,-5,-6,-7,-18,6,6,-9,-8,-16,6,6,-14,6,-15,-10,6,-11,]),'CONTINUE':([0,2,3,4,5,6,7,8,23,27,28,35,38,40,41,43,44,45,47,48,51,52,],[7,-1,-2,-3,-4,-5,-6,-7,-18,7,7,-9,-8,-16,7,7,-14,7,-15,-10,7,-11,]),'ELIF':([0,2,3,4,5,6,7,8,23,27,28,35,38,39,40,41,43,44,45,47,48,51,52,],[8,-1,-2,-3,-4,-5,-6,-7,-18,8,8,-9,-8,42,-16,8,8,-14,8,-15,-10,8,-11,]),'IDENTIFIER':([0,2,3,4,5,6,7,8,13,22,23,24,25,26,27,28,35,38,40,41,43,44,45,47,48,51,52,],[9,-1,-2,-3,-4,-5,-6,-7,30,30,-18,30,30,30,9,9,-9,-8,-16,9,9,-14,9,-15,-10,9,-11,]),'KEYWORD':([0,2,3,4,5,6,7,8,23,27,28,35,38,40,41,43,44,45,47,48,51,52,],[13,-1,-2,-3,-4,-5,-6,-7,-18,13,13,-9,-8,-16,13,13,-14,13,-15,-10,13,-11,]),'NUMBER':([0,2,3,4,5,6,7,8,13,22,23,24,25,26,27,28,35,38,40,41,43,44,45,47,48,51,52,],[14,-1,-2,-3,-4,-5,-6,-7,14,14,-18,14,14,14,14,14,-9,-8,-16,14,14,-14,14,-15,-10,14,-11,]),'FLOAT':([0,2,3,4,5,6,7,8,13,22,23,24,25,26,27,28,35,38,40,41,43,44,45,47,48,51,52,],[15,-1,-2,-3,-4,-5,-6,-7,15,15,-18,15,15,15,15,15,-9,-8,-16,15,15,-14,15,-15,-10,15,-11,]),'BOOLEAN':([0,2,3,4,5,6,7,8,13,22,23,24,25,26,27,28,35,38,40,41,43,44,45,47,48,51,52,],[16,-1,-2,-3,-4,-5,-6,-7,16,16,-18,16,16,16,16,16,-9,-8,-16,16,16,-14,16,-15,-10,16,-11,]),'CHAR':([0,2,3,4,5,6,7,8,13,22,23,24,25,26,27,28,35,38,40,41,43,44,45,47,48,51,52,],[17,-1,-2,-3,-4,-5,-6,-7,17,17,-18,17,17,17,17,17,-9,-8,-16,17,17,-14,17,-15,-10,17,-11,]),'STRING':([0,2,3,4,5,6,7,8,13,22,23,24,25,26,27,28,35,38,40,41,43,44,45,47,48,51,52,],[18,-1,-2,-3,-4,-5,-6,-7,18,18,-18,18,18,18,18,18,-9,-8,-16,18,18,-14,18,-15,-10,18,-11,]),'$end':([1,2,3,4,5,6,7,8,23,35,38,40,48,52,],[0,-1,-2,-3,-4,-5,-6,-7,-18,-9,-8,-16,-10,-11,]),'NEWLINE':([2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,23,29,30,31,32,33,34,35,36,37,38,40,42,46,48,50,52,],[-1,-2,-3,-4,-5,-6,-7,-23,23,27,28,-19,-20,-21,-22,-24,-25,-26,-27,-18,-12,-23,38,-28,-29,-30,39,40,41,-8,-16,45,-13,49,51,-11,]),'RCURLY':([2,3,4,5,6,7,8,23,35,38,40,43,44,47,48,52,],[-1,-2,-3,-4,-5,-6,-7,-18,-9,-8,-16,46,-14,-15,-10,-11,]),'ASSIGN':([9,],[22,]),'MATH_OP':([9,10,14,15,16,17,18,19,20,21,29,30,31,32,33,34,],[-23,24,-19,-20,-21,-22,-24,-25,-26,-27,24,-23,24,24,24,24,]),'COMPARISON_OP':([9,10,14,15,16,17,18,19,20,21,29,30,31,32,33,34,],[-23,25,-19,-20,-21,-22,-24,-25,-26,-27,25,-23,25,25,25,25,]),'LOGICAL_OP':([9,10,14,15,16,17,18,19,20,21,29,30,31,32,33,34,],[-23,26,-19,-20,-21,-22,-24,-25,-26,-27,26,-23,26,26,26,26,]),'LCURLY':([14,15,16,17,18,19,20,21,29,30,32,33,34,],[-19,-20,-21,-22,-24,-25,-26,-27,37,-23,-28,-29,-30,]),'ELSE':([49,],[50,]),}
+_lr_action_items = {'BREAK':([0,2,3,4,5,6,7,8,9,23,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[6,-1,-2,-3,-4,-5,-6,-7,-8,-19,6,6,6,-15,-9,-7,-16,-17,6,6,6,6,6,6,]),'CONTINUE':([0,2,3,4,5,6,7,8,9,23,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[7,-1,-2,-3,-4,-5,-6,-7,-8,-19,7,7,7,-15,-9,-7,-16,-17,7,7,7,7,7,7,]),'ELIF':([0,2,3,4,5,6,7,8,9,23,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[8,-1,-2,-3,-4,-5,-6,-7,-8,-19,8,8,42,-15,-9,-7,-16,-17,8,8,8,8,8,8,]),'ELSE':([0,2,3,4,5,6,7,8,9,23,27,28,36,37,41,42,43,44,45,46,47,48,50,52,53,],[9,-1,-2,-3,-4,-5,-6,-7,-8,-19,9,9,9,-15,-9,-7,-16,-17,9,9,9,9,51,9,9,]),'IDENTIFIER':([0,2,3,4,5,6,7,8,9,14,16,22,23,24,25,26,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[10,-1,-2,-3,-4,-5,-6,-7,-8,30,30,30,-19,30,30,30,10,10,10,-15,-9,-7,-16,-17,10,10,10,10,10,10,]),'KEYWORD':([0,2,3,4,5,6,7,8,9,23,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[14,-1,-2,-3,-4,-5,-6,-7,-8,-19,14,14,14,-15,-9,-7,-16,-17,14,14,14,14,14,14,]),'LPAREN':([0,2,3,4,5,6,7,8,9,14,16,22,23,24,25,26,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[16,-1,-2,-3,-4,-5,-6,-7,-8,16,16,16,-19,16,16,16,16,16,16,-15,-9,-7,-16,-17,16,16,16,16,16,16,]),'NUMBER':([0,2,3,4,5,6,7,8,9,14,16,22,23,24,25,26,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[17,-1,-2,-3,-4,-5,-6,-7,-8,17,17,17,-19,17,17,17,17,17,17,-15,-9,-7,-16,-17,17,17,17,17,17,17,]),'FLOAT':([0,2,3,4,5,6,7,8,9,14,16,22,23,24,25,26,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[18,-1,-2,-3,-4,-5,-6,-7,-8,18,18,18,-19,18,18,18,18,18,18,-15,-9,-7,-16,-17,18,18,18,18,18,18,]),'BOOLEAN':([0,2,3,4,5,6,7,8,9,14,16,22,23,24,25,26,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[19,-1,-2,-3,-4,-5,-6,-7,-8,19,19,19,-19,19,19,19,19,19,19,-15,-9,-7,-16,-17,19,19,19,19,19,19,]),'CHAR':([0,2,3,4,5,6,7,8,9,14,16,22,23,24,25,26,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[20,-1,-2,-3,-4,-5,-6,-7,-8,20,20,20,-19,20,20,20,20,20,20,-15,-9,-7,-16,-17,20,20,20,20,20,20,]),'STRING':([0,2,3,4,5,6,7,8,9,14,16,22,23,24,25,26,27,28,36,37,41,42,43,44,45,46,47,48,52,53,],[21,-1,-2,-3,-4,-5,-6,-7,-8,21,21,21,-19,21,21,21,21,21,21,-15,-9,-7,-16,-17,21,21,21,21,21,21,]),'$end':([1,2,3,4,5,6,7,8,9,23,36,37,41,42,43,44,48,53,],[0,-1,-2,-3,-4,-5,-6,-7,-8,-19,-10,-15,-9,-7,-16,-17,-11,-12,]),'NEWLINE':([2,3,4,5,6,7,8,9,10,11,12,13,15,17,18,19,20,21,23,29,30,32,33,34,35,36,37,38,39,40,41,42,43,44,48,49,51,53,],[-1,-2,-3,-4,-5,-6,-7,-8,-29,23,27,28,-20,-25,-26,-27,-28,-30,-19,-13,-29,41,-22,-23,-24,-10,-15,44,45,-21,-9,46,-16,-17,50,-14,52,-12,]),'RCURLY':([2,3,4,5,6,7,8,9,23,36,37,41,42,43,44,47,48,53,],[-1,-2,-3,-4,-5,-6,-7,-8,-19,-10,-15,-9,-7,-16,-17,49,-11,-12,]),'ASSIGN':([10,],[22,]),'MATH_OP':([10,11,15,17,18,19,20,21,29,30,31,32,33,34,35,40,],[-29,24,-20,-25,-26,-27,-28,-30,24,-29,24,24,-22,-23,-24,-21,]),'COMPARISON_OP':([10,11,15,17,18,19,20,21,29,30,31,32,33,34,35,40,],[-29,25,-20,-25,-26,-27,-28,-30,25,-29,25,25,25,-23,-24,-21,]),'LOGICAL_OP':([10,11,15,17,18,19,20,21,29,30,31,32,33,34,35,40,],[-29,26,-20,-25,-26,-27,-28,-30,26,-29,26,26,26,26,-24,-21,]),'LCURLY':([15,17,18,19,20,21,29,30,33,34,35,40,],[-20,-25,-26,-27,-28,-30,39,-29,-22,-23,-24,-21,]),'RPAREN':([15,17,18,19,20,21,30,31,33,34,35,40,],[-20,-25,-26,-27,-28,-30,-29,40,-22,-23,-24,-21,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,27,28,41,43,45,51,],[1,35,36,44,47,48,52,]),'assignment_statement':([0,27,28,41,43,45,51,],[2,2,2,2,2,2,2,]),'if_statement':([0,27,28,41,43,45,51,],[3,3,3,3,3,3,3,]),'while_statement':([0,27,28,41,43,45,51,],[4,4,4,4,4,4,4,]),'expression_statement':([0,27,28,41,43,45,51,],[5,5,5,5,5,5,5,]),'expression':([0,13,22,24,25,26,27,28,41,43,45,51,],[10,29,31,32,33,34,10,10,10,10,10,10,]),'if_clause':([0,27,28,41,43,45,51,],[11,11,11,11,11,11,11,]),'while_clause':([0,27,28,41,43,45,51,],[12,12,12,12,12,12,12,]),'math_expression':([0,13,22,24,25,26,27,28,41,43,45,51,],[19,19,19,19,19,19,19,19,19,19,19,19,]),'comparison_expression':([0,13,22,24,25,26,27,28,41,43,45,51,],[20,20,20,20,20,20,20,20,20,20,20,20,]),'logical_expression':([0,13,22,24,25,26,27,28,41,43,45,51,],[21,21,21,21,21,21,21,21,21,21,21,21,]),'statement_list':([41,],[43,]),}
+_lr_goto_items = {'statement':([0,27,28,36,45,46,47,48,52,53,],[1,37,38,43,37,37,43,43,37,43,]),'assignment_statement':([0,27,28,36,45,46,47,48,52,53,],[2,2,2,2,2,2,2,2,2,2,]),'if_statement':([0,27,28,36,45,46,47,48,52,53,],[3,3,3,3,3,3,3,3,3,3,]),'while_statement':([0,27,28,36,45,46,47,48,52,53,],[4,4,4,4,4,4,4,4,4,4,]),'expression_statement':([0,27,28,36,45,46,47,48,52,53,],[5,5,5,5,5,5,5,5,5,5,]),'expression':([0,14,16,22,24,25,26,27,28,36,45,46,47,48,52,53,],[11,29,31,32,33,34,35,11,11,11,11,11,11,11,11,11,]),'if_clause':([0,27,28,36,45,46,47,48,52,53,],[12,12,12,12,12,12,12,12,12,12,]),'while_clause':([0,27,28,36,45,46,47,48,52,53,],[13,13,13,13,13,13,13,13,13,13,]),'literal':([0,14,16,22,24,25,26,27,28,36,45,46,47,48,52,53,],[15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,]),'statement_list':([27,45,46,52,],[36,47,48,53,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,34 +27,34 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
-  ('statement -> assignment_statement','statement',1,'p_statement','parser.py',7),
-  ('statement -> if_statement','statement',1,'p_statement','parser.py',8),
-  ('statement -> while_statement','statement',1,'p_statement','parser.py',9),
-  ('statement -> expression_statement','statement',1,'p_statement','parser.py',10),
-  ('statement -> BREAK','statement',1,'p_statement','parser.py',11),
-  ('statement -> CONTINUE','statement',1,'p_statement','parser.py',12),
-  ('statement -> ELIF','statement',1,'p_statement','parser.py',13),
-  ('assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE','assignment_statement',4,'p_assignment_statement','parser.py',18),
-  ('if_statement -> if_clause NEWLINE statement','if_statement',3,'p_if_statement','parser.py',32),
-  ('if_statement -> if_clause NEWLINE statement NEWLINE ELIF NEWLINE statement','if_statement',7,'p_if_statement','parser.py',33),
-  ('if_statement -> if_clause NEWLINE statement NEWLINE ELIF NEWLINE statement NEWLINE ELSE NEWLINE statement','if_statement',11,'p_if_statement','parser.py',34),
-  ('if_clause -> KEYWORD expression','if_clause',2,'p_if_clause','parser.py',44),
-  ('if_clause -> KEYWORD expression LCURLY NEWLINE statement_list RCURLY','if_clause',6,'p_if_clause','parser.py',45),
-  ('statement_list -> statement','statement_list',1,'p_statement_list','parser.py',54),
-  ('statement_list -> statement_list statement','statement_list',2,'p_statement_list','parser.py',55),
-  ('while_statement -> while_clause NEWLINE statement NEWLINE','while_statement',4,'p_while_statement','parser.py',65),
-  ('while_clause -> KEYWORD expression','while_clause',2,'p_while_clause','parser.py',69),
-  ('expression_statement -> expression NEWLINE','expression_statement',2,'p_expression_statement','parser.py',73),
-  ('expression -> NUMBER','expression',1,'p_expression','parser.py',78),
-  ('expression -> FLOAT','expression',1,'p_expression','parser.py',79),
-  ('expression -> BOOLEAN','expression',1,'p_expression','parser.py',80),
-  ('expression -> CHAR','expression',1,'p_expression','parser.py',81),
-  ('expression -> IDENTIFIER','expression',1,'p_expression','parser.py',82),
-  ('expression -> STRING','expression',1,'p_expression','parser.py',83),
-  ('expression -> math_expression','expression',1,'p_expression','parser.py',84),
-  ('expression -> comparison_expression','expression',1,'p_expression','parser.py',85),
-  ('expression -> logical_expression','expression',1,'p_expression','parser.py',86),
-  ('math_expression -> expression MATH_OP expression','math_expression',3,'p_math_expression','parser.py',91),
-  ('comparison_expression -> expression COMPARISON_OP expression','comparison_expression',3,'p_comparison_expression','parser.py',95),
-  ('logical_expression -> expression LOGICAL_OP expression','logical_expression',3,'p_logical_expression','parser.py',99),
+  ('statement -> assignment_statement','statement',1,'p_statement','lexer.py',105),
+  ('statement -> if_statement','statement',1,'p_statement','lexer.py',106),
+  ('statement -> while_statement','statement',1,'p_statement','lexer.py',107),
+  ('statement -> expression_statement','statement',1,'p_statement','lexer.py',108),
+  ('statement -> BREAK','statement',1,'p_statement','lexer.py',109),
+  ('statement -> CONTINUE','statement',1,'p_statement','lexer.py',110),
+  ('statement -> ELIF','statement',1,'p_statement','lexer.py',111),
+  ('statement -> ELSE','statement',1,'p_statement','lexer.py',112),
+  ('assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE','assignment_statement',4,'p_assignment_statement','lexer.py',117),
+  ('if_statement -> if_clause NEWLINE statement_list','if_statement',3,'p_if_statement','lexer.py',122),
+  ('if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list','if_statement',6,'p_if_statement','lexer.py',123),
+  ('if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list','if_statement',10,'p_if_statement','lexer.py',124),
+  ('if_clause -> KEYWORD expression','if_clause',2,'p_if_clause','lexer.py',135),
+  ('if_clause -> KEYWORD expression LCURLY NEWLINE statement_list RCURLY','if_clause',6,'p_if_clause','lexer.py',136),
+  ('statement_list -> statement','statement_list',1,'p_statement_list','lexer.py',145),
+  ('statement_list -> statement_list statement','statement_list',2,'p_statement_list','lexer.py',146),
+  ('while_statement -> while_clause NEWLINE statement NEWLINE','while_statement',4,'p_while_statement','lexer.py',154),
+  ('while_clause -> KEYWORD expression','while_clause',2,'p_while_clause','lexer.py',158),
+  ('expression_statement -> expression NEWLINE','expression_statement',2,'p_expression_statement','lexer.py',162),
+  ('expression -> literal','expression',1,'p_expression','lexer.py',167),
+  ('expression -> LPAREN expression RPAREN','expression',3,'p_expression','lexer.py',168),
+  ('expression -> expression MATH_OP expression','expression',3,'p_expression','lexer.py',169),
+  ('expression -> expression COMPARISON_OP expression','expression',3,'p_expression','lexer.py',170),
+  ('expression -> expression LOGICAL_OP expression','expression',3,'p_expression','lexer.py',171),
+  ('literal -> NUMBER','literal',1,'p_literal','lexer.py',182),
+  ('literal -> FLOAT','literal',1,'p_literal','lexer.py',183),
+  ('literal -> BOOLEAN','literal',1,'p_literal','lexer.py',184),
+  ('literal -> CHAR','literal',1,'p_literal','lexer.py',185),
+  ('literal -> IDENTIFIER','literal',1,'p_literal','lexer.py',186),
+  ('literal -> STRING','literal',1,'p_literal','lexer.py',187),
 ]
