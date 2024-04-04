@@ -19,3 +19,5 @@ PetFox is using PLY-3.11 for it's lexical analysis. PLY is python based.
 - `src/`: Contains our source code
 - `docs/`: Includes documents like pictures and project slide shows.
 - `examples/`: Contains example or demonstration code for PetFox
+- `archive/`: Contains old programs or unused files
+
