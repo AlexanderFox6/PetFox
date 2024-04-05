@@ -27,9 +27,14 @@ tokens = (
     'BREAK',
     'CONTINUE',
     'ELIF',
-    'ELSE',  
-    'END',  # Define END token
+    'ELSE',
+    'END',
+    'PLUS',
+    'MINUS',
+    'TIMES',
+    'DIVIDE',
 )
+
 
 # Regular expressions for tokens
 t_NUMBER = r'\d+'
@@ -108,6 +113,7 @@ t_ignore = ' \t'
 def t_eof(t):
     return None
 
+
 # Build the lexer
 lexer = lex.lex()
 
@@ -147,6 +153,7 @@ def p_if_statement(p):
         p[0] = ('if', p[1], p[3], ('elif', p[5], p[7]))
     else:
         p[0] = ('if', p[1], p[3], ('elif', p[5], p[7]), ('else', p[9]))
+
 
 def p_while_statement(p):
     'while_statement : while_clause NEWLINE statement_list END'

@@ -1,10 +1,25 @@
 from parser import parser
+from lexer import lexer
 
-# Input expression
-expression = "3 + 4 * (5 - 2)"
+while True:
+    try:
+        expression = input("Enter an expression: ")
+        if expression.lower() == 'exit':
+            break
 
-# Parse the expression
-result = parser.parse(expression)
+        # Tokenize the input string
+        lexer.input(expression)
+        while True:
+            tok = lexer.token()
+            if not tok:
+                break  # No more input
+            print(tok)
 
-# Print the resulting AST
-print(result)
+        # Parse the input string
+        result = parser.parse(expression)
+        print(result)
+    except EOFError:
+        break
+    except Exception as e:
+        print("Error:", e)
+        continue  # Continue to next iteration
