@@ -1,6 +1,6 @@
-from ply import lex
+import ply.lex as lex
 
-# Define tokens
+# Tokens
 tokens = (
     'NUMBER',
     'FLOAT',
@@ -9,71 +9,63 @@ tokens = (
     'IDENTIFIER',
     'KEYWORD',
     'ASSIGN',
+    'MATH_OP',
+    'EXPONENT',
     'BITWISE_OP',
     'ASSIGN_OP',
     'COMPARISON_OP',
     'LOGICAL_OP',
+    'SEPARATOR',
     'STRING',
     'LPAREN',
     'RPAREN',
     'LCURLY',
     'RCURLY',
     'NEWLINE',
-    'BREAK',
-    'CONTINUE',
-    'ELIF',
-    'ELSE',
-    'END',
-    'PLUS',
-    'MINUS',
-    'TIMES',
-    'DIVIDE',
+    'COMMENT',
+    'EOF'
 )
 
 # Regular expressions for tokens
-t_NUMBER = r'[0-7]+'
+t_NUMBER = r'\d+'
 t_FLOAT = r'\d+\.\d+'
 t_BOOLEAN = r'true|false'
 t_CHAR = r"'.'"
-t_IDENTIFIER = r'[a-zA-Z_][a-zA-Z0-7_]*'
-
+t_IDENTIFIER = r'[a-zA-Z_][a-zA-Z0-9_]*'
 
 # Updated keywords
 keywords = {
-    'ilf': 'ILF',        # if
-    'elz': 'ELZ',        # else
-    'elil': 'ELIL',      # elif
-    'whilk': 'WHILK',    # while
-    'frz': 'FRZ',        # for
-    'pet': 'PET',        # let
-    'fox': 'FOX',        # const
-    'florp': 'FLORP',    # function
-    'plitz': 'PLITZ',    # print
-    'rytorn': 'RYTORN',  # return
-    'bryk': 'BRYK',      # break
-    'conzorp': 'CONZORP',  # continue
-    'tlip': 'TLIP',      # true
-    'flop': 'FLOP',      # false
-    'nol': 'NOL',        # null
-    'ni': 'NI',          # in
+    'ilf': 'KEYWORD',  # if
+    'elz': 'KEYWORD',  # else
+    'elil': 'KEYWORD'  # elif
+    'whilk': 'KEYWORD',  # while
+    'frz': 'KEYWORD',  # for
+    'pet': 'KEYWORD',  # let
+    'fox': 'KEYWORD',  # const
+    'florp': 'KEYWORD',  # function
+    'plitz': 'KEYWORD',  # print
+    'rytorn': 'KEYWORD',  # return
+    'bryk': 'KEYWORD',  # break
+    'conzorp': 'KEYWORD',  # continue
+    'tlip': 'KEYWORD'  # true
+    'flop': 'KEYWORD'  # false
+    'nol': 'KEYWORD'  # null
+    'ni': 'KEYWORD'  # in
 }
-
 
 # Updated special symbols
 t_ASSIGN = r'='
+t_MATH_OP = r'[+\-*/%]'
+t_EXPONENT = r'\*\*'
 t_BITWISE_OP = r'[&|~^]'
 t_ASSIGN_OP = r'\+=|-=|\*=|/=|%=|&=|\|=|\^='
 t_COMPARISON_OP = r'==|!=|<|>|<=|>='
 t_LOGICAL_OP = r'and|or|not'
+t_SEPARATOR = r':|,'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_LCURLY = r'{'
 t_RCURLY = r'}'
-t_PLUS = r'\+'
-t_MINUS = r'-'
-t_TIMES = r'\*'
-t_DIVIDE = r'/'
-t_END = r';'
 
 # Updated strings and comments
 
@@ -96,9 +88,8 @@ def t_NEWLINE(t):
     t.lexer.lineno += len(t.value)
     return t
 
+
 # Error handling rule
-
-
 def t_error(t):
     print(f"Illegal character '{t.value[0]}' at line {t.lineno}")
     t.lexer.skip(1)
@@ -114,4 +105,5 @@ def t_eof(t):
     return None
 
 
+# Build the lexer
 lexer = lex.lex()
