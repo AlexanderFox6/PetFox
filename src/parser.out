@@ -4,10 +4,6 @@ Unused terminals:
 
     ASSIGN_OP
     BITWISE_OP
-    COMMENT
-    EOF
-    EXPONENT
-    SEPARATOR
 
 Grammar
 
@@ -18,72 +14,67 @@ Rule 3     statement -> while_statement
 Rule 4     statement -> expression_statement
 Rule 5     statement -> BREAK
 Rule 6     statement -> CONTINUE
-Rule 7     statement -> ELIF
-Rule 8     statement -> ELSE
-Rule 9     assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE
-Rule 10    if_statement -> if_clause NEWLINE statement_list
-Rule 11    if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-Rule 12    if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-Rule 13    if_clause -> KEYWORD expression
-Rule 14    if_clause -> KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-Rule 15    statement_list -> statement
-Rule 16    statement_list -> statement_list statement
-Rule 17    while_statement -> while_clause NEWLINE statement NEWLINE
-Rule 18    while_clause -> KEYWORD expression
-Rule 19    expression_statement -> expression NEWLINE
-Rule 20    expression -> LPAREN expression RPAREN
-Rule 21    expression -> expression MATH_OP expression
-Rule 22    expression -> expression COMPARISON_OP expression
-Rule 23    expression -> expression LOGICAL_OP expression
-Rule 24    expression -> literal
-Rule 25    literal -> NUMBER
-Rule 26    literal -> FLOAT
-Rule 27    literal -> BOOLEAN
-Rule 28    literal -> CHAR
-Rule 29    literal -> IDENTIFIER
-Rule 30    literal -> STRING
+Rule 7     assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE
+Rule 8     if_statement -> if_clause NEWLINE statement_list END
+Rule 9     if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list END
+Rule 10    if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+Rule 11    while_statement -> while_clause NEWLINE statement_list END
+Rule 12    if_clause -> KEYWORD expression
+Rule 13    if_clause -> KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+Rule 14    statement_list -> statement
+Rule 15    statement_list -> statement_list NEWLINE statement
+Rule 16    while_clause -> KEYWORD expression
+Rule 17    expression_statement -> expression NEWLINE
+Rule 18    expression -> LPAREN expression RPAREN
+Rule 19    expression -> expression MATH_OP expression
+Rule 20    expression -> expression COMPARISON_OP expression
+Rule 21    expression -> expression LOGICAL_OP expression
+Rule 22    expression -> literal
+Rule 23    literal -> NUMBER
+Rule 24    literal -> FLOAT
+Rule 25    literal -> BOOLEAN
+Rule 26    literal -> CHAR
+Rule 27    literal -> IDENTIFIER
+Rule 28    literal -> STRING
 
 Terminals, with rules where they appear
 
-ASSIGN               : 9
+ASSIGN               : 7
 ASSIGN_OP            : 
 BITWISE_OP           : 
-BOOLEAN              : 27
+BOOLEAN              : 25
 BREAK                : 5
-CHAR                 : 28
-COMMENT              : 
-COMPARISON_OP        : 22
+CHAR                 : 26
+COMPARISON_OP        : 20
 CONTINUE             : 6
-ELIF                 : 7 11 12
-ELSE                 : 8 12
-EOF                  : 
-EXPONENT             : 
-FLOAT                : 26
-IDENTIFIER           : 9 29
-KEYWORD              : 13 14 18
-LCURLY               : 14
-LOGICAL_OP           : 23
-LPAREN               : 20
-MATH_OP              : 21
-NEWLINE              : 9 10 11 11 12 12 12 12 14 17 17 19
-NUMBER               : 25
-RCURLY               : 14
-RPAREN               : 20
-SEPARATOR            : 
-STRING               : 30
+ELIF                 : 9 10
+ELSE                 : 10
+END                  : 8 9 10 11
+FLOAT                : 24
+IDENTIFIER           : 7 27
+KEYWORD              : 12 13 16
+LCURLY               : 13
+LOGICAL_OP           : 21
+LPAREN               : 18
+MATH_OP              : 19
+NEWLINE              : 7 8 9 9 10 10 10 10 11 13 15 17
+NUMBER               : 23
+RCURLY               : 13
+RPAREN               : 18
+STRING               : 28
 error                : 
 
 Nonterminals, with rules where they appear
 
 assignment_statement : 1
-expression           : 9 13 14 18 19 20 21 21 22 22 23 23
+expression           : 7 12 13 16 17 18 19 19 20 20 21 21
 expression_statement : 4
-if_clause            : 10 11 12
+if_clause            : 8 9 10
 if_statement         : 2
-literal              : 24
-statement            : 15 16 17 0
-statement_list       : 10 11 11 12 12 12 14 16
-while_clause         : 17
+literal              : 22
+statement            : 14 15 0
+statement_list       : 8 9 9 10 10 10 11 13 15
+while_clause         : 11
 while_statement      : 3
 
 Parsing method: LALR
@@ -97,51 +88,47 @@ state 0
     (4) statement -> . expression_statement
     (5) statement -> . BREAK
     (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (7) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (8) if_statement -> . if_clause NEWLINE statement_list END
+    (9) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (11) while_statement -> . while_clause NEWLINE statement_list END
+    (17) expression_statement -> . expression NEWLINE
+    (12) if_clause -> . KEYWORD expression
+    (13) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> . KEYWORD expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
     BREAK           shift and go to state 6
     CONTINUE        shift and go to state 7
-    ELIF            shift and go to state 8
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
+    IDENTIFIER      shift and go to state 8
+    KEYWORD         shift and go to state 12
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    STRING          shift and go to state 19
 
     statement                      shift and go to state 1
     assignment_statement           shift and go to state 2
     if_statement                   shift and go to state 3
     while_statement                shift and go to state 4
     expression_statement           shift and go to state 5
-    expression                     shift and go to state 11
-    if_clause                      shift and go to state 12
-    while_clause                   shift and go to state 13
-    literal                        shift and go to state 16
+    expression                     shift and go to state 9
+    if_clause                      shift and go to state 10
+    while_clause                   shift and go to state 11
+    literal                        shift and go to state 14
 
 state 1
 
@@ -154,18 +141,8 @@ state 2
     (1) statement -> assignment_statement .
 
     $end            reduce using rule 1 (statement -> assignment_statement .)
+    END             reduce using rule 1 (statement -> assignment_statement .)
     ELIF            reduce using rule 1 (statement -> assignment_statement .)
-    BREAK           reduce using rule 1 (statement -> assignment_statement .)
-    CONTINUE        reduce using rule 1 (statement -> assignment_statement .)
-    ELSE            reduce using rule 1 (statement -> assignment_statement .)
-    IDENTIFIER      reduce using rule 1 (statement -> assignment_statement .)
-    KEYWORD         reduce using rule 1 (statement -> assignment_statement .)
-    LPAREN          reduce using rule 1 (statement -> assignment_statement .)
-    NUMBER          reduce using rule 1 (statement -> assignment_statement .)
-    FLOAT           reduce using rule 1 (statement -> assignment_statement .)
-    BOOLEAN         reduce using rule 1 (statement -> assignment_statement .)
-    CHAR            reduce using rule 1 (statement -> assignment_statement .)
-    STRING          reduce using rule 1 (statement -> assignment_statement .)
     NEWLINE         reduce using rule 1 (statement -> assignment_statement .)
     RCURLY          reduce using rule 1 (statement -> assignment_statement .)
 
@@ -175,18 +152,8 @@ state 3
     (2) statement -> if_statement .
 
     $end            reduce using rule 2 (statement -> if_statement .)
+    END             reduce using rule 2 (statement -> if_statement .)
     ELIF            reduce using rule 2 (statement -> if_statement .)
-    BREAK           reduce using rule 2 (statement -> if_statement .)
-    CONTINUE        reduce using rule 2 (statement -> if_statement .)
-    ELSE            reduce using rule 2 (statement -> if_statement .)
-    IDENTIFIER      reduce using rule 2 (statement -> if_statement .)
-    KEYWORD         reduce using rule 2 (statement -> if_statement .)
-    LPAREN          reduce using rule 2 (statement -> if_statement .)
-    NUMBER          reduce using rule 2 (statement -> if_statement .)
-    FLOAT           reduce using rule 2 (statement -> if_statement .)
-    BOOLEAN         reduce using rule 2 (statement -> if_statement .)
-    CHAR            reduce using rule 2 (statement -> if_statement .)
-    STRING          reduce using rule 2 (statement -> if_statement .)
     NEWLINE         reduce using rule 2 (statement -> if_statement .)
     RCURLY          reduce using rule 2 (statement -> if_statement .)
 
@@ -196,18 +163,8 @@ state 4
     (3) statement -> while_statement .
 
     $end            reduce using rule 3 (statement -> while_statement .)
+    END             reduce using rule 3 (statement -> while_statement .)
     ELIF            reduce using rule 3 (statement -> while_statement .)
-    BREAK           reduce using rule 3 (statement -> while_statement .)
-    CONTINUE        reduce using rule 3 (statement -> while_statement .)
-    ELSE            reduce using rule 3 (statement -> while_statement .)
-    IDENTIFIER      reduce using rule 3 (statement -> while_statement .)
-    KEYWORD         reduce using rule 3 (statement -> while_statement .)
-    LPAREN          reduce using rule 3 (statement -> while_statement .)
-    NUMBER          reduce using rule 3 (statement -> while_statement .)
-    FLOAT           reduce using rule 3 (statement -> while_statement .)
-    BOOLEAN         reduce using rule 3 (statement -> while_statement .)
-    CHAR            reduce using rule 3 (statement -> while_statement .)
-    STRING          reduce using rule 3 (statement -> while_statement .)
     NEWLINE         reduce using rule 3 (statement -> while_statement .)
     RCURLY          reduce using rule 3 (statement -> while_statement .)
 
@@ -217,18 +174,8 @@ state 5
     (4) statement -> expression_statement .
 
     $end            reduce using rule 4 (statement -> expression_statement .)
+    END             reduce using rule 4 (statement -> expression_statement .)
     ELIF            reduce using rule 4 (statement -> expression_statement .)
-    BREAK           reduce using rule 4 (statement -> expression_statement .)
-    CONTINUE        reduce using rule 4 (statement -> expression_statement .)
-    ELSE            reduce using rule 4 (statement -> expression_statement .)
-    IDENTIFIER      reduce using rule 4 (statement -> expression_statement .)
-    KEYWORD         reduce using rule 4 (statement -> expression_statement .)
-    LPAREN          reduce using rule 4 (statement -> expression_statement .)
-    NUMBER          reduce using rule 4 (statement -> expression_statement .)
-    FLOAT           reduce using rule 4 (statement -> expression_statement .)
-    BOOLEAN         reduce using rule 4 (statement -> expression_statement .)
-    CHAR            reduce using rule 4 (statement -> expression_statement .)
-    STRING          reduce using rule 4 (statement -> expression_statement .)
     NEWLINE         reduce using rule 4 (statement -> expression_statement .)
     RCURLY          reduce using rule 4 (statement -> expression_statement .)
 
@@ -238,18 +185,8 @@ state 6
     (5) statement -> BREAK .
 
     $end            reduce using rule 5 (statement -> BREAK .)
+    END             reduce using rule 5 (statement -> BREAK .)
     ELIF            reduce using rule 5 (statement -> BREAK .)
-    BREAK           reduce using rule 5 (statement -> BREAK .)
-    CONTINUE        reduce using rule 5 (statement -> BREAK .)
-    ELSE            reduce using rule 5 (statement -> BREAK .)
-    IDENTIFIER      reduce using rule 5 (statement -> BREAK .)
-    KEYWORD         reduce using rule 5 (statement -> BREAK .)
-    LPAREN          reduce using rule 5 (statement -> BREAK .)
-    NUMBER          reduce using rule 5 (statement -> BREAK .)
-    FLOAT           reduce using rule 5 (statement -> BREAK .)
-    BOOLEAN         reduce using rule 5 (statement -> BREAK .)
-    CHAR            reduce using rule 5 (statement -> BREAK .)
-    STRING          reduce using rule 5 (statement -> BREAK .)
     NEWLINE         reduce using rule 5 (statement -> BREAK .)
     RCURLY          reduce using rule 5 (statement -> BREAK .)
 
@@ -259,1271 +196,952 @@ state 7
     (6) statement -> CONTINUE .
 
     $end            reduce using rule 6 (statement -> CONTINUE .)
+    END             reduce using rule 6 (statement -> CONTINUE .)
     ELIF            reduce using rule 6 (statement -> CONTINUE .)
-    BREAK           reduce using rule 6 (statement -> CONTINUE .)
-    CONTINUE        reduce using rule 6 (statement -> CONTINUE .)
-    ELSE            reduce using rule 6 (statement -> CONTINUE .)
-    IDENTIFIER      reduce using rule 6 (statement -> CONTINUE .)
-    KEYWORD         reduce using rule 6 (statement -> CONTINUE .)
-    LPAREN          reduce using rule 6 (statement -> CONTINUE .)
-    NUMBER          reduce using rule 6 (statement -> CONTINUE .)
-    FLOAT           reduce using rule 6 (statement -> CONTINUE .)
-    BOOLEAN         reduce using rule 6 (statement -> CONTINUE .)
-    CHAR            reduce using rule 6 (statement -> CONTINUE .)
-    STRING          reduce using rule 6 (statement -> CONTINUE .)
     NEWLINE         reduce using rule 6 (statement -> CONTINUE .)
     RCURLY          reduce using rule 6 (statement -> CONTINUE .)
 
 
 state 8
 
-    (7) statement -> ELIF .
+    (7) assignment_statement -> IDENTIFIER . ASSIGN expression NEWLINE
+    (27) literal -> IDENTIFIER .
 
-    $end            reduce using rule 7 (statement -> ELIF .)
-    ELIF            reduce using rule 7 (statement -> ELIF .)
-    BREAK           reduce using rule 7 (statement -> ELIF .)
-    CONTINUE        reduce using rule 7 (statement -> ELIF .)
-    ELSE            reduce using rule 7 (statement -> ELIF .)
-    IDENTIFIER      reduce using rule 7 (statement -> ELIF .)
-    KEYWORD         reduce using rule 7 (statement -> ELIF .)
-    LPAREN          reduce using rule 7 (statement -> ELIF .)
-    NUMBER          reduce using rule 7 (statement -> ELIF .)
-    FLOAT           reduce using rule 7 (statement -> ELIF .)
-    BOOLEAN         reduce using rule 7 (statement -> ELIF .)
-    CHAR            reduce using rule 7 (statement -> ELIF .)
-    STRING          reduce using rule 7 (statement -> ELIF .)
-    NEWLINE         reduce using rule 7 (statement -> ELIF .)
-    RCURLY          reduce using rule 7 (statement -> ELIF .)
+    ASSIGN          shift and go to state 20
+    NEWLINE         reduce using rule 27 (literal -> IDENTIFIER .)
+    MATH_OP         reduce using rule 27 (literal -> IDENTIFIER .)
+    COMPARISON_OP   reduce using rule 27 (literal -> IDENTIFIER .)
+    LOGICAL_OP      reduce using rule 27 (literal -> IDENTIFIER .)
 
 
 state 9
 
-    (8) statement -> ELSE .
+    (17) expression_statement -> expression . NEWLINE
+    (19) expression -> expression . MATH_OP expression
+    (20) expression -> expression . COMPARISON_OP expression
+    (21) expression -> expression . LOGICAL_OP expression
 
-    $end            reduce using rule 8 (statement -> ELSE .)
-    ELIF            reduce using rule 8 (statement -> ELSE .)
-    BREAK           reduce using rule 8 (statement -> ELSE .)
-    CONTINUE        reduce using rule 8 (statement -> ELSE .)
-    ELSE            reduce using rule 8 (statement -> ELSE .)
-    IDENTIFIER      reduce using rule 8 (statement -> ELSE .)
-    KEYWORD         reduce using rule 8 (statement -> ELSE .)
-    LPAREN          reduce using rule 8 (statement -> ELSE .)
-    NUMBER          reduce using rule 8 (statement -> ELSE .)
-    FLOAT           reduce using rule 8 (statement -> ELSE .)
-    BOOLEAN         reduce using rule 8 (statement -> ELSE .)
-    CHAR            reduce using rule 8 (statement -> ELSE .)
-    STRING          reduce using rule 8 (statement -> ELSE .)
-    NEWLINE         reduce using rule 8 (statement -> ELSE .)
-    RCURLY          reduce using rule 8 (statement -> ELSE .)
+    NEWLINE         shift and go to state 21
+    MATH_OP         shift and go to state 22
+    COMPARISON_OP   shift and go to state 23
+    LOGICAL_OP      shift and go to state 24
 
 
 state 10
 
-    (9) assignment_statement -> IDENTIFIER . ASSIGN expression NEWLINE
-    (29) literal -> IDENTIFIER .
+    (8) if_statement -> if_clause . NEWLINE statement_list END
+    (9) if_statement -> if_clause . NEWLINE statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> if_clause . NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
 
-    ASSIGN          shift and go to state 22
-    NEWLINE         reduce using rule 29 (literal -> IDENTIFIER .)
-    MATH_OP         reduce using rule 29 (literal -> IDENTIFIER .)
-    COMPARISON_OP   reduce using rule 29 (literal -> IDENTIFIER .)
-    LOGICAL_OP      reduce using rule 29 (literal -> IDENTIFIER .)
+    NEWLINE         shift and go to state 25
 
 
 state 11
 
-    (19) expression_statement -> expression . NEWLINE
-    (21) expression -> expression . MATH_OP expression
-    (22) expression -> expression . COMPARISON_OP expression
-    (23) expression -> expression . LOGICAL_OP expression
+    (11) while_statement -> while_clause . NEWLINE statement_list END
 
-    NEWLINE         shift and go to state 23
-    MATH_OP         shift and go to state 24
-    COMPARISON_OP   shift and go to state 25
-    LOGICAL_OP      shift and go to state 26
+    NEWLINE         shift and go to state 26
 
 
 state 12
 
-    (10) if_statement -> if_clause . NEWLINE statement_list
-    (11) if_statement -> if_clause . NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> if_clause . NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
+    (12) if_clause -> KEYWORD . expression
+    (13) if_clause -> KEYWORD . expression LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> KEYWORD . expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    NEWLINE         shift and go to state 27
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    IDENTIFIER      shift and go to state 28
+    STRING          shift and go to state 19
 
+    expression                     shift and go to state 27
+    literal                        shift and go to state 14
 
 state 13
 
-    (17) while_statement -> while_clause . NEWLINE statement NEWLINE
+    (18) expression -> LPAREN . expression RPAREN
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    NEWLINE         shift and go to state 28
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    IDENTIFIER      shift and go to state 28
+    STRING          shift and go to state 19
 
+    expression                     shift and go to state 29
+    literal                        shift and go to state 14
 
 state 14
 
-    (13) if_clause -> KEYWORD . expression
-    (14) if_clause -> KEYWORD . expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> KEYWORD . expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (22) expression -> literal .
 
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    IDENTIFIER      shift and go to state 30
-    STRING          shift and go to state 21
+    NEWLINE         reduce using rule 22 (expression -> literal .)
+    MATH_OP         reduce using rule 22 (expression -> literal .)
+    COMPARISON_OP   reduce using rule 22 (expression -> literal .)
+    LOGICAL_OP      reduce using rule 22 (expression -> literal .)
+    LCURLY          reduce using rule 22 (expression -> literal .)
+    RPAREN          reduce using rule 22 (expression -> literal .)
 
-    expression                     shift and go to state 29
-    literal                        shift and go to state 16
 
 state 15
 
-    (20) expression -> LPAREN . expression RPAREN
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (23) literal -> NUMBER .
 
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    IDENTIFIER      shift and go to state 30
-    STRING          shift and go to state 21
+    NEWLINE         reduce using rule 23 (literal -> NUMBER .)
+    MATH_OP         reduce using rule 23 (literal -> NUMBER .)
+    COMPARISON_OP   reduce using rule 23 (literal -> NUMBER .)
+    LOGICAL_OP      reduce using rule 23 (literal -> NUMBER .)
+    LCURLY          reduce using rule 23 (literal -> NUMBER .)
+    RPAREN          reduce using rule 23 (literal -> NUMBER .)
 
-    expression                     shift and go to state 31
-    literal                        shift and go to state 16
 
 state 16
 
-    (24) expression -> literal .
+    (24) literal -> FLOAT .
 
-    NEWLINE         reduce using rule 24 (expression -> literal .)
-    MATH_OP         reduce using rule 24 (expression -> literal .)
-    COMPARISON_OP   reduce using rule 24 (expression -> literal .)
-    LOGICAL_OP      reduce using rule 24 (expression -> literal .)
-    LCURLY          reduce using rule 24 (expression -> literal .)
-    RPAREN          reduce using rule 24 (expression -> literal .)
+    NEWLINE         reduce using rule 24 (literal -> FLOAT .)
+    MATH_OP         reduce using rule 24 (literal -> FLOAT .)
+    COMPARISON_OP   reduce using rule 24 (literal -> FLOAT .)
+    LOGICAL_OP      reduce using rule 24 (literal -> FLOAT .)
+    LCURLY          reduce using rule 24 (literal -> FLOAT .)
+    RPAREN          reduce using rule 24 (literal -> FLOAT .)
 
 
 state 17
 
-    (25) literal -> NUMBER .
+    (25) literal -> BOOLEAN .
 
-    NEWLINE         reduce using rule 25 (literal -> NUMBER .)
-    MATH_OP         reduce using rule 25 (literal -> NUMBER .)
-    COMPARISON_OP   reduce using rule 25 (literal -> NUMBER .)
-    LOGICAL_OP      reduce using rule 25 (literal -> NUMBER .)
-    LCURLY          reduce using rule 25 (literal -> NUMBER .)
-    RPAREN          reduce using rule 25 (literal -> NUMBER .)
+    NEWLINE         reduce using rule 25 (literal -> BOOLEAN .)
+    MATH_OP         reduce using rule 25 (literal -> BOOLEAN .)
+    COMPARISON_OP   reduce using rule 25 (literal -> BOOLEAN .)
+    LOGICAL_OP      reduce using rule 25 (literal -> BOOLEAN .)
+    LCURLY          reduce using rule 25 (literal -> BOOLEAN .)
+    RPAREN          reduce using rule 25 (literal -> BOOLEAN .)
 
 
 state 18
 
-    (26) literal -> FLOAT .
+    (26) literal -> CHAR .
 
-    NEWLINE         reduce using rule 26 (literal -> FLOAT .)
-    MATH_OP         reduce using rule 26 (literal -> FLOAT .)
-    COMPARISON_OP   reduce using rule 26 (literal -> FLOAT .)
-    LOGICAL_OP      reduce using rule 26 (literal -> FLOAT .)
-    LCURLY          reduce using rule 26 (literal -> FLOAT .)
-    RPAREN          reduce using rule 26 (literal -> FLOAT .)
+    NEWLINE         reduce using rule 26 (literal -> CHAR .)
+    MATH_OP         reduce using rule 26 (literal -> CHAR .)
+    COMPARISON_OP   reduce using rule 26 (literal -> CHAR .)
+    LOGICAL_OP      reduce using rule 26 (literal -> CHAR .)
+    LCURLY          reduce using rule 26 (literal -> CHAR .)
+    RPAREN          reduce using rule 26 (literal -> CHAR .)
 
 
 state 19
 
-    (27) literal -> BOOLEAN .
+    (28) literal -> STRING .
 
-    NEWLINE         reduce using rule 27 (literal -> BOOLEAN .)
-    MATH_OP         reduce using rule 27 (literal -> BOOLEAN .)
-    COMPARISON_OP   reduce using rule 27 (literal -> BOOLEAN .)
-    LOGICAL_OP      reduce using rule 27 (literal -> BOOLEAN .)
-    LCURLY          reduce using rule 27 (literal -> BOOLEAN .)
-    RPAREN          reduce using rule 27 (literal -> BOOLEAN .)
+    NEWLINE         reduce using rule 28 (literal -> STRING .)
+    MATH_OP         reduce using rule 28 (literal -> STRING .)
+    COMPARISON_OP   reduce using rule 28 (literal -> STRING .)
+    LOGICAL_OP      reduce using rule 28 (literal -> STRING .)
+    LCURLY          reduce using rule 28 (literal -> STRING .)
+    RPAREN          reduce using rule 28 (literal -> STRING .)
 
 
 state 20
 
-    (28) literal -> CHAR .
+    (7) assignment_statement -> IDENTIFIER ASSIGN . expression NEWLINE
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    NEWLINE         reduce using rule 28 (literal -> CHAR .)
-    MATH_OP         reduce using rule 28 (literal -> CHAR .)
-    COMPARISON_OP   reduce using rule 28 (literal -> CHAR .)
-    LOGICAL_OP      reduce using rule 28 (literal -> CHAR .)
-    LCURLY          reduce using rule 28 (literal -> CHAR .)
-    RPAREN          reduce using rule 28 (literal -> CHAR .)
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    IDENTIFIER      shift and go to state 28
+    STRING          shift and go to state 19
 
+    expression                     shift and go to state 30
+    literal                        shift and go to state 14
 
 state 21
 
-    (30) literal -> STRING .
+    (17) expression_statement -> expression NEWLINE .
 
-    NEWLINE         reduce using rule 30 (literal -> STRING .)
-    MATH_OP         reduce using rule 30 (literal -> STRING .)
-    COMPARISON_OP   reduce using rule 30 (literal -> STRING .)
-    LOGICAL_OP      reduce using rule 30 (literal -> STRING .)
-    LCURLY          reduce using rule 30 (literal -> STRING .)
-    RPAREN          reduce using rule 30 (literal -> STRING .)
+    $end            reduce using rule 17 (expression_statement -> expression NEWLINE .)
+    END             reduce using rule 17 (expression_statement -> expression NEWLINE .)
+    ELIF            reduce using rule 17 (expression_statement -> expression NEWLINE .)
+    NEWLINE         reduce using rule 17 (expression_statement -> expression NEWLINE .)
+    RCURLY          reduce using rule 17 (expression_statement -> expression NEWLINE .)
 
 
 state 22
 
-    (9) assignment_statement -> IDENTIFIER ASSIGN . expression NEWLINE
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (19) expression -> expression MATH_OP . expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    IDENTIFIER      shift and go to state 30
-    STRING          shift and go to state 21
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    IDENTIFIER      shift and go to state 28
+    STRING          shift and go to state 19
 
-    expression                     shift and go to state 32
-    literal                        shift and go to state 16
+    expression                     shift and go to state 31
+    literal                        shift and go to state 14
 
 state 23
 
-    (19) expression_statement -> expression NEWLINE .
+    (20) expression -> expression COMPARISON_OP . expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    $end            reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    ELIF            reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    BREAK           reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    CONTINUE        reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    ELSE            reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    IDENTIFIER      reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    KEYWORD         reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    LPAREN          reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    NUMBER          reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    FLOAT           reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    BOOLEAN         reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    CHAR            reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    STRING          reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    NEWLINE         reduce using rule 19 (expression_statement -> expression NEWLINE .)
-    RCURLY          reduce using rule 19 (expression_statement -> expression NEWLINE .)
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    IDENTIFIER      shift and go to state 28
+    STRING          shift and go to state 19
 
+    expression                     shift and go to state 32
+    literal                        shift and go to state 14
 
 state 24
 
-    (21) expression -> expression MATH_OP . expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (21) expression -> expression LOGICAL_OP . expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    IDENTIFIER      shift and go to state 30
-    STRING          shift and go to state 21
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    IDENTIFIER      shift and go to state 28
+    STRING          shift and go to state 19
 
     expression                     shift and go to state 33
-    literal                        shift and go to state 16
+    literal                        shift and go to state 14
 
 state 25
 
-    (22) expression -> expression COMPARISON_OP . expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (8) if_statement -> if_clause NEWLINE . statement_list END
+    (9) if_statement -> if_clause NEWLINE . statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> if_clause NEWLINE . statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (14) statement_list -> . statement
+    (15) statement_list -> . statement_list NEWLINE statement
+    (1) statement -> . assignment_statement
+    (2) statement -> . if_statement
+    (3) statement -> . while_statement
+    (4) statement -> . expression_statement
+    (5) statement -> . BREAK
+    (6) statement -> . CONTINUE
+    (7) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (8) if_statement -> . if_clause NEWLINE statement_list END
+    (9) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (11) while_statement -> . while_clause NEWLINE statement_list END
+    (17) expression_statement -> . expression NEWLINE
+    (12) if_clause -> . KEYWORD expression
+    (13) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> . KEYWORD expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    IDENTIFIER      shift and go to state 30
-    STRING          shift and go to state 21
+    BREAK           shift and go to state 6
+    CONTINUE        shift and go to state 7
+    IDENTIFIER      shift and go to state 8
+    KEYWORD         shift and go to state 12
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    STRING          shift and go to state 19
 
-    expression                     shift and go to state 34
-    literal                        shift and go to state 16
+    if_clause                      shift and go to state 10
+    statement_list                 shift and go to state 34
+    statement                      shift and go to state 35
+    assignment_statement           shift and go to state 2
+    if_statement                   shift and go to state 3
+    while_statement                shift and go to state 4
+    expression_statement           shift and go to state 5
+    expression                     shift and go to state 9
+    while_clause                   shift and go to state 11
+    literal                        shift and go to state 14
 
 state 26
 
-    (23) expression -> expression LOGICAL_OP . expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (11) while_statement -> while_clause NEWLINE . statement_list END
+    (14) statement_list -> . statement
+    (15) statement_list -> . statement_list NEWLINE statement
+    (1) statement -> . assignment_statement
+    (2) statement -> . if_statement
+    (3) statement -> . while_statement
+    (4) statement -> . expression_statement
+    (5) statement -> . BREAK
+    (6) statement -> . CONTINUE
+    (7) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (8) if_statement -> . if_clause NEWLINE statement_list END
+    (9) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (11) while_statement -> . while_clause NEWLINE statement_list END
+    (17) expression_statement -> . expression NEWLINE
+    (12) if_clause -> . KEYWORD expression
+    (13) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> . KEYWORD expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    IDENTIFIER      shift and go to state 30
-    STRING          shift and go to state 21
+    BREAK           shift and go to state 6
+    CONTINUE        shift and go to state 7
+    IDENTIFIER      shift and go to state 8
+    KEYWORD         shift and go to state 12
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    STRING          shift and go to state 19
 
-    expression                     shift and go to state 35
-    literal                        shift and go to state 16
+    while_clause                   shift and go to state 11
+    statement_list                 shift and go to state 36
+    statement                      shift and go to state 35
+    assignment_statement           shift and go to state 2
+    if_statement                   shift and go to state 3
+    while_statement                shift and go to state 4
+    expression_statement           shift and go to state 5
+    expression                     shift and go to state 9
+    if_clause                      shift and go to state 10
+    literal                        shift and go to state 14
 
 state 27
 
-    (10) if_statement -> if_clause NEWLINE . statement_list
-    (11) if_statement -> if_clause NEWLINE . statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> if_clause NEWLINE . statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (15) statement_list -> . statement
-    (16) statement_list -> . statement_list statement
-    (1) statement -> . assignment_statement
-    (2) statement -> . if_statement
-    (3) statement -> . while_statement
-    (4) statement -> . expression_statement
-    (5) statement -> . BREAK
-    (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (12) if_clause -> KEYWORD expression .
+    (13) if_clause -> KEYWORD expression . LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> KEYWORD expression .
+    (19) expression -> expression . MATH_OP expression
+    (20) expression -> expression . COMPARISON_OP expression
+    (21) expression -> expression . LOGICAL_OP expression
 
-    BREAK           shift and go to state 6
-    CONTINUE        shift and go to state 7
-    ELIF            shift and go to state 8
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
+  ! reduce/reduce conflict for NEWLINE resolved using rule 12 (if_clause -> KEYWORD expression .)
+    NEWLINE         reduce using rule 12 (if_clause -> KEYWORD expression .)
+    LCURLY          shift and go to state 37
+    MATH_OP         shift and go to state 22
+    COMPARISON_OP   shift and go to state 23
+    LOGICAL_OP      shift and go to state 24
 
-    if_clause                      shift and go to state 12
-    statement_list                 shift and go to state 36
-    statement                      shift and go to state 37
-    assignment_statement           shift and go to state 2
-    if_statement                   shift and go to state 3
-    while_statement                shift and go to state 4
-    expression_statement           shift and go to state 5
-    expression                     shift and go to state 11
-    while_clause                   shift and go to state 13
-    literal                        shift and go to state 16
+  ! NEWLINE         [ reduce using rule 16 (while_clause -> KEYWORD expression .) ]
+
 
 state 28
 
-    (17) while_statement -> while_clause NEWLINE . statement NEWLINE
-    (1) statement -> . assignment_statement
-    (2) statement -> . if_statement
-    (3) statement -> . while_statement
-    (4) statement -> . expression_statement
-    (5) statement -> . BREAK
-    (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (27) literal -> IDENTIFIER .
 
-    BREAK           shift and go to state 6
-    CONTINUE        shift and go to state 7
-    ELIF            shift and go to state 8
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
+    LCURLY          reduce using rule 27 (literal -> IDENTIFIER .)
+    MATH_OP         reduce using rule 27 (literal -> IDENTIFIER .)
+    COMPARISON_OP   reduce using rule 27 (literal -> IDENTIFIER .)
+    LOGICAL_OP      reduce using rule 27 (literal -> IDENTIFIER .)
+    NEWLINE         reduce using rule 27 (literal -> IDENTIFIER .)
+    RPAREN          reduce using rule 27 (literal -> IDENTIFIER .)
 
-    while_clause                   shift and go to state 13
-    statement                      shift and go to state 38
-    assignment_statement           shift and go to state 2
-    if_statement                   shift and go to state 3
-    while_statement                shift and go to state 4
-    expression_statement           shift and go to state 5
-    expression                     shift and go to state 11
-    if_clause                      shift and go to state 12
-    literal                        shift and go to state 16
 
 state 29
 
-    (13) if_clause -> KEYWORD expression .
-    (14) if_clause -> KEYWORD expression . LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> KEYWORD expression .
-    (21) expression -> expression . MATH_OP expression
-    (22) expression -> expression . COMPARISON_OP expression
-    (23) expression -> expression . LOGICAL_OP expression
+    (18) expression -> LPAREN expression . RPAREN
+    (19) expression -> expression . MATH_OP expression
+    (20) expression -> expression . COMPARISON_OP expression
+    (21) expression -> expression . LOGICAL_OP expression
 
-  ! reduce/reduce conflict for NEWLINE resolved using rule 13 (if_clause -> KEYWORD expression .)
-    NEWLINE         reduce using rule 13 (if_clause -> KEYWORD expression .)
-    LCURLY          shift and go to state 39
-    MATH_OP         shift and go to state 24
-    COMPARISON_OP   shift and go to state 25
-    LOGICAL_OP      shift and go to state 26
-
-  ! NEWLINE         [ reduce using rule 18 (while_clause -> KEYWORD expression .) ]
+    RPAREN          shift and go to state 38
+    MATH_OP         shift and go to state 22
+    COMPARISON_OP   shift and go to state 23
+    LOGICAL_OP      shift and go to state 24
 
 
 state 30
 
-    (29) literal -> IDENTIFIER .
+    (7) assignment_statement -> IDENTIFIER ASSIGN expression . NEWLINE
+    (19) expression -> expression . MATH_OP expression
+    (20) expression -> expression . COMPARISON_OP expression
+    (21) expression -> expression . LOGICAL_OP expression
 
-    LCURLY          reduce using rule 29 (literal -> IDENTIFIER .)
-    MATH_OP         reduce using rule 29 (literal -> IDENTIFIER .)
-    COMPARISON_OP   reduce using rule 29 (literal -> IDENTIFIER .)
-    LOGICAL_OP      reduce using rule 29 (literal -> IDENTIFIER .)
-    NEWLINE         reduce using rule 29 (literal -> IDENTIFIER .)
-    RPAREN          reduce using rule 29 (literal -> IDENTIFIER .)
+    NEWLINE         shift and go to state 39
+    MATH_OP         shift and go to state 22
+    COMPARISON_OP   shift and go to state 23
+    LOGICAL_OP      shift and go to state 24
 
 
 state 31
 
-    (20) expression -> LPAREN expression . RPAREN
-    (21) expression -> expression . MATH_OP expression
-    (22) expression -> expression . COMPARISON_OP expression
-    (23) expression -> expression . LOGICAL_OP expression
+    (19) expression -> expression MATH_OP expression .
+    (19) expression -> expression . MATH_OP expression
+    (20) expression -> expression . COMPARISON_OP expression
+    (21) expression -> expression . LOGICAL_OP expression
 
-    RPAREN          shift and go to state 40
-    MATH_OP         shift and go to state 24
-    COMPARISON_OP   shift and go to state 25
-    LOGICAL_OP      shift and go to state 26
+    NEWLINE         reduce using rule 19 (expression -> expression MATH_OP expression .)
+    MATH_OP         reduce using rule 19 (expression -> expression MATH_OP expression .)
+    LCURLY          reduce using rule 19 (expression -> expression MATH_OP expression .)
+    RPAREN          reduce using rule 19 (expression -> expression MATH_OP expression .)
+    COMPARISON_OP   shift and go to state 23
+    LOGICAL_OP      shift and go to state 24
+
+  ! COMPARISON_OP   [ reduce using rule 19 (expression -> expression MATH_OP expression .) ]
+  ! LOGICAL_OP      [ reduce using rule 19 (expression -> expression MATH_OP expression .) ]
+  ! MATH_OP         [ shift and go to state 22 ]
 
 
 state 32
 
-    (9) assignment_statement -> IDENTIFIER ASSIGN expression . NEWLINE
-    (21) expression -> expression . MATH_OP expression
-    (22) expression -> expression . COMPARISON_OP expression
-    (23) expression -> expression . LOGICAL_OP expression
+    (20) expression -> expression COMPARISON_OP expression .
+    (19) expression -> expression . MATH_OP expression
+    (20) expression -> expression . COMPARISON_OP expression
+    (21) expression -> expression . LOGICAL_OP expression
 
-    NEWLINE         shift and go to state 41
-    MATH_OP         shift and go to state 24
-    COMPARISON_OP   shift and go to state 25
-    LOGICAL_OP      shift and go to state 26
+    NEWLINE         reduce using rule 20 (expression -> expression COMPARISON_OP expression .)
+    MATH_OP         reduce using rule 20 (expression -> expression COMPARISON_OP expression .)
+    COMPARISON_OP   reduce using rule 20 (expression -> expression COMPARISON_OP expression .)
+    LCURLY          reduce using rule 20 (expression -> expression COMPARISON_OP expression .)
+    RPAREN          reduce using rule 20 (expression -> expression COMPARISON_OP expression .)
+    LOGICAL_OP      shift and go to state 24
+
+  ! LOGICAL_OP      [ reduce using rule 20 (expression -> expression COMPARISON_OP expression .) ]
+  ! MATH_OP         [ shift and go to state 22 ]
+  ! COMPARISON_OP   [ shift and go to state 23 ]
 
 
 state 33
 
-    (21) expression -> expression MATH_OP expression .
-    (21) expression -> expression . MATH_OP expression
-    (22) expression -> expression . COMPARISON_OP expression
-    (23) expression -> expression . LOGICAL_OP expression
+    (21) expression -> expression LOGICAL_OP expression .
+    (19) expression -> expression . MATH_OP expression
+    (20) expression -> expression . COMPARISON_OP expression
+    (21) expression -> expression . LOGICAL_OP expression
 
-    NEWLINE         reduce using rule 21 (expression -> expression MATH_OP expression .)
-    MATH_OP         reduce using rule 21 (expression -> expression MATH_OP expression .)
-    LCURLY          reduce using rule 21 (expression -> expression MATH_OP expression .)
-    RPAREN          reduce using rule 21 (expression -> expression MATH_OP expression .)
-    COMPARISON_OP   shift and go to state 25
-    LOGICAL_OP      shift and go to state 26
+    NEWLINE         reduce using rule 21 (expression -> expression LOGICAL_OP expression .)
+    MATH_OP         reduce using rule 21 (expression -> expression LOGICAL_OP expression .)
+    COMPARISON_OP   reduce using rule 21 (expression -> expression LOGICAL_OP expression .)
+    LOGICAL_OP      reduce using rule 21 (expression -> expression LOGICAL_OP expression .)
+    LCURLY          reduce using rule 21 (expression -> expression LOGICAL_OP expression .)
+    RPAREN          reduce using rule 21 (expression -> expression LOGICAL_OP expression .)
 
-  ! COMPARISON_OP   [ reduce using rule 21 (expression -> expression MATH_OP expression .) ]
-  ! LOGICAL_OP      [ reduce using rule 21 (expression -> expression MATH_OP expression .) ]
-  ! MATH_OP         [ shift and go to state 24 ]
+  ! MATH_OP         [ shift and go to state 22 ]
+  ! COMPARISON_OP   [ shift and go to state 23 ]
+  ! LOGICAL_OP      [ shift and go to state 24 ]
 
 
 state 34
 
-    (22) expression -> expression COMPARISON_OP expression .
-    (21) expression -> expression . MATH_OP expression
-    (22) expression -> expression . COMPARISON_OP expression
-    (23) expression -> expression . LOGICAL_OP expression
+    (8) if_statement -> if_clause NEWLINE statement_list . END
+    (9) if_statement -> if_clause NEWLINE statement_list . ELIF NEWLINE statement_list END
+    (10) if_statement -> if_clause NEWLINE statement_list . ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (15) statement_list -> statement_list . NEWLINE statement
 
-    NEWLINE         reduce using rule 22 (expression -> expression COMPARISON_OP expression .)
-    MATH_OP         reduce using rule 22 (expression -> expression COMPARISON_OP expression .)
-    COMPARISON_OP   reduce using rule 22 (expression -> expression COMPARISON_OP expression .)
-    LCURLY          reduce using rule 22 (expression -> expression COMPARISON_OP expression .)
-    RPAREN          reduce using rule 22 (expression -> expression COMPARISON_OP expression .)
-    LOGICAL_OP      shift and go to state 26
-
-  ! LOGICAL_OP      [ reduce using rule 22 (expression -> expression COMPARISON_OP expression .) ]
-  ! MATH_OP         [ shift and go to state 24 ]
-  ! COMPARISON_OP   [ shift and go to state 25 ]
+    END             shift and go to state 41
+    ELIF            shift and go to state 42
+    NEWLINE         shift and go to state 40
 
 
 state 35
 
-    (23) expression -> expression LOGICAL_OP expression .
-    (21) expression -> expression . MATH_OP expression
-    (22) expression -> expression . COMPARISON_OP expression
-    (23) expression -> expression . LOGICAL_OP expression
+    (14) statement_list -> statement .
 
-    NEWLINE         reduce using rule 23 (expression -> expression LOGICAL_OP expression .)
-    MATH_OP         reduce using rule 23 (expression -> expression LOGICAL_OP expression .)
-    COMPARISON_OP   reduce using rule 23 (expression -> expression LOGICAL_OP expression .)
-    LOGICAL_OP      reduce using rule 23 (expression -> expression LOGICAL_OP expression .)
-    LCURLY          reduce using rule 23 (expression -> expression LOGICAL_OP expression .)
-    RPAREN          reduce using rule 23 (expression -> expression LOGICAL_OP expression .)
-
-  ! MATH_OP         [ shift and go to state 24 ]
-  ! COMPARISON_OP   [ shift and go to state 25 ]
-  ! LOGICAL_OP      [ shift and go to state 26 ]
+    END             reduce using rule 14 (statement_list -> statement .)
+    ELIF            reduce using rule 14 (statement_list -> statement .)
+    NEWLINE         reduce using rule 14 (statement_list -> statement .)
+    RCURLY          reduce using rule 14 (statement_list -> statement .)
 
 
 state 36
 
-    (10) if_statement -> if_clause NEWLINE statement_list .
-    (11) if_statement -> if_clause NEWLINE statement_list . ELIF NEWLINE statement_list
-    (12) if_statement -> if_clause NEWLINE statement_list . ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (16) statement_list -> statement_list . statement
-    (1) statement -> . assignment_statement
-    (2) statement -> . if_statement
-    (3) statement -> . while_statement
-    (4) statement -> . expression_statement
-    (5) statement -> . BREAK
-    (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (11) while_statement -> while_clause NEWLINE statement_list . END
+    (15) statement_list -> statement_list . NEWLINE statement
 
-  ! shift/reduce conflict for ELIF resolved as shift
-  ! shift/reduce conflict for BREAK resolved as shift
-  ! shift/reduce conflict for CONTINUE resolved as shift
-  ! shift/reduce conflict for ELSE resolved as shift
-  ! shift/reduce conflict for IDENTIFIER resolved as shift
-  ! shift/reduce conflict for KEYWORD resolved as shift
-  ! shift/reduce conflict for LPAREN resolved as shift
-  ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for FLOAT resolved as shift
-  ! shift/reduce conflict for BOOLEAN resolved as shift
-  ! shift/reduce conflict for CHAR resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
-    $end            reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .)
-    NEWLINE         reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .)
-    RCURLY          reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .)
-    ELIF            shift and go to state 42
-    BREAK           shift and go to state 6
-    CONTINUE        shift and go to state 7
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
+    END             shift and go to state 43
+    NEWLINE         shift and go to state 40
 
-  ! ELIF            [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! BREAK           [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! CONTINUE        [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! ELSE            [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! IDENTIFIER      [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! KEYWORD         [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! LPAREN          [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! NUMBER          [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! FLOAT           [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! BOOLEAN         [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! CHAR            [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-  ! STRING          [ reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list .) ]
-
-    if_clause                      shift and go to state 12
-    statement                      shift and go to state 43
-    assignment_statement           shift and go to state 2
-    if_statement                   shift and go to state 3
-    while_statement                shift and go to state 4
-    expression_statement           shift and go to state 5
-    expression                     shift and go to state 11
-    while_clause                   shift and go to state 13
-    literal                        shift and go to state 16
 
 state 37
 
-    (15) statement_list -> statement .
-
-    ELIF            reduce using rule 15 (statement_list -> statement .)
-    BREAK           reduce using rule 15 (statement_list -> statement .)
-    CONTINUE        reduce using rule 15 (statement_list -> statement .)
-    ELSE            reduce using rule 15 (statement_list -> statement .)
-    IDENTIFIER      reduce using rule 15 (statement_list -> statement .)
-    KEYWORD         reduce using rule 15 (statement_list -> statement .)
-    LPAREN          reduce using rule 15 (statement_list -> statement .)
-    NUMBER          reduce using rule 15 (statement_list -> statement .)
-    FLOAT           reduce using rule 15 (statement_list -> statement .)
-    BOOLEAN         reduce using rule 15 (statement_list -> statement .)
-    CHAR            reduce using rule 15 (statement_list -> statement .)
-    STRING          reduce using rule 15 (statement_list -> statement .)
-    $end            reduce using rule 15 (statement_list -> statement .)
-    NEWLINE         reduce using rule 15 (statement_list -> statement .)
-    RCURLY          reduce using rule 15 (statement_list -> statement .)
-
-
-state 38
-
-    (17) while_statement -> while_clause NEWLINE statement . NEWLINE
+    (13) if_clause -> KEYWORD expression LCURLY . NEWLINE statement_list RCURLY
 
     NEWLINE         shift and go to state 44
 
 
+state 38
+
+    (18) expression -> LPAREN expression RPAREN .
+
+    NEWLINE         reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    MATH_OP         reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    COMPARISON_OP   reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    LOGICAL_OP      reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    LCURLY          reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+
+
 state 39
 
-    (14) if_clause -> KEYWORD expression LCURLY . NEWLINE statement_list RCURLY
+    (7) assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .
 
-    NEWLINE         shift and go to state 45
+    $end            reduce using rule 7 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
+    END             reduce using rule 7 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
+    ELIF            reduce using rule 7 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
+    NEWLINE         reduce using rule 7 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
+    RCURLY          reduce using rule 7 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
 
 
 state 40
 
-    (20) expression -> LPAREN expression RPAREN .
+    (15) statement_list -> statement_list NEWLINE . statement
+    (1) statement -> . assignment_statement
+    (2) statement -> . if_statement
+    (3) statement -> . while_statement
+    (4) statement -> . expression_statement
+    (5) statement -> . BREAK
+    (6) statement -> . CONTINUE
+    (7) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (8) if_statement -> . if_clause NEWLINE statement_list END
+    (9) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (11) while_statement -> . while_clause NEWLINE statement_list END
+    (17) expression_statement -> . expression NEWLINE
+    (12) if_clause -> . KEYWORD expression
+    (13) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> . KEYWORD expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    NEWLINE         reduce using rule 20 (expression -> LPAREN expression RPAREN .)
-    MATH_OP         reduce using rule 20 (expression -> LPAREN expression RPAREN .)
-    COMPARISON_OP   reduce using rule 20 (expression -> LPAREN expression RPAREN .)
-    LOGICAL_OP      reduce using rule 20 (expression -> LPAREN expression RPAREN .)
-    LCURLY          reduce using rule 20 (expression -> LPAREN expression RPAREN .)
-    RPAREN          reduce using rule 20 (expression -> LPAREN expression RPAREN .)
+    BREAK           shift and go to state 6
+    CONTINUE        shift and go to state 7
+    IDENTIFIER      shift and go to state 8
+    KEYWORD         shift and go to state 12
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    STRING          shift and go to state 19
 
+    statement                      shift and go to state 45
+    assignment_statement           shift and go to state 2
+    if_statement                   shift and go to state 3
+    while_statement                shift and go to state 4
+    expression_statement           shift and go to state 5
+    expression                     shift and go to state 9
+    if_clause                      shift and go to state 10
+    while_clause                   shift and go to state 11
+    literal                        shift and go to state 14
 
 state 41
 
-    (9) assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .
+    (8) if_statement -> if_clause NEWLINE statement_list END .
 
-    $end            reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    ELIF            reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    BREAK           reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    CONTINUE        reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    ELSE            reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    IDENTIFIER      reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    KEYWORD         reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    LPAREN          reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    NUMBER          reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    FLOAT           reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    BOOLEAN         reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    CHAR            reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    STRING          reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    NEWLINE         reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
-    RCURLY          reduce using rule 9 (assignment_statement -> IDENTIFIER ASSIGN expression NEWLINE .)
+    $end            reduce using rule 8 (if_statement -> if_clause NEWLINE statement_list END .)
+    END             reduce using rule 8 (if_statement -> if_clause NEWLINE statement_list END .)
+    ELIF            reduce using rule 8 (if_statement -> if_clause NEWLINE statement_list END .)
+    NEWLINE         reduce using rule 8 (if_statement -> if_clause NEWLINE statement_list END .)
+    RCURLY          reduce using rule 8 (if_statement -> if_clause NEWLINE statement_list END .)
 
 
 state 42
 
-    (11) if_statement -> if_clause NEWLINE statement_list ELIF . NEWLINE statement_list
-    (12) if_statement -> if_clause NEWLINE statement_list ELIF . NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (7) statement -> ELIF .
+    (9) if_statement -> if_clause NEWLINE statement_list ELIF . NEWLINE statement_list END
+    (10) if_statement -> if_clause NEWLINE statement_list ELIF . NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
 
-  ! shift/reduce conflict for NEWLINE resolved as shift
     NEWLINE         shift and go to state 46
-    ELIF            reduce using rule 7 (statement -> ELIF .)
-    BREAK           reduce using rule 7 (statement -> ELIF .)
-    CONTINUE        reduce using rule 7 (statement -> ELIF .)
-    ELSE            reduce using rule 7 (statement -> ELIF .)
-    IDENTIFIER      reduce using rule 7 (statement -> ELIF .)
-    KEYWORD         reduce using rule 7 (statement -> ELIF .)
-    LPAREN          reduce using rule 7 (statement -> ELIF .)
-    NUMBER          reduce using rule 7 (statement -> ELIF .)
-    FLOAT           reduce using rule 7 (statement -> ELIF .)
-    BOOLEAN         reduce using rule 7 (statement -> ELIF .)
-    CHAR            reduce using rule 7 (statement -> ELIF .)
-    STRING          reduce using rule 7 (statement -> ELIF .)
-    $end            reduce using rule 7 (statement -> ELIF .)
-    RCURLY          reduce using rule 7 (statement -> ELIF .)
-
-  ! NEWLINE         [ reduce using rule 7 (statement -> ELIF .) ]
 
 
 state 43
 
-    (16) statement_list -> statement_list statement .
+    (11) while_statement -> while_clause NEWLINE statement_list END .
 
-    ELIF            reduce using rule 16 (statement_list -> statement_list statement .)
-    BREAK           reduce using rule 16 (statement_list -> statement_list statement .)
-    CONTINUE        reduce using rule 16 (statement_list -> statement_list statement .)
-    ELSE            reduce using rule 16 (statement_list -> statement_list statement .)
-    IDENTIFIER      reduce using rule 16 (statement_list -> statement_list statement .)
-    KEYWORD         reduce using rule 16 (statement_list -> statement_list statement .)
-    LPAREN          reduce using rule 16 (statement_list -> statement_list statement .)
-    NUMBER          reduce using rule 16 (statement_list -> statement_list statement .)
-    FLOAT           reduce using rule 16 (statement_list -> statement_list statement .)
-    BOOLEAN         reduce using rule 16 (statement_list -> statement_list statement .)
-    CHAR            reduce using rule 16 (statement_list -> statement_list statement .)
-    STRING          reduce using rule 16 (statement_list -> statement_list statement .)
-    $end            reduce using rule 16 (statement_list -> statement_list statement .)
-    NEWLINE         reduce using rule 16 (statement_list -> statement_list statement .)
-    RCURLY          reduce using rule 16 (statement_list -> statement_list statement .)
+    $end            reduce using rule 11 (while_statement -> while_clause NEWLINE statement_list END .)
+    END             reduce using rule 11 (while_statement -> while_clause NEWLINE statement_list END .)
+    ELIF            reduce using rule 11 (while_statement -> while_clause NEWLINE statement_list END .)
+    NEWLINE         reduce using rule 11 (while_statement -> while_clause NEWLINE statement_list END .)
+    RCURLY          reduce using rule 11 (while_statement -> while_clause NEWLINE statement_list END .)
 
 
 state 44
 
-    (17) while_statement -> while_clause NEWLINE statement NEWLINE .
+    (13) if_clause -> KEYWORD expression LCURLY NEWLINE . statement_list RCURLY
+    (14) statement_list -> . statement
+    (15) statement_list -> . statement_list NEWLINE statement
+    (1) statement -> . assignment_statement
+    (2) statement -> . if_statement
+    (3) statement -> . while_statement
+    (4) statement -> . expression_statement
+    (5) statement -> . BREAK
+    (6) statement -> . CONTINUE
+    (7) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (8) if_statement -> . if_clause NEWLINE statement_list END
+    (9) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (11) while_statement -> . while_clause NEWLINE statement_list END
+    (17) expression_statement -> . expression NEWLINE
+    (12) if_clause -> . KEYWORD expression
+    (13) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> . KEYWORD expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    $end            reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    ELIF            reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    BREAK           reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    CONTINUE        reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    ELSE            reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    IDENTIFIER      reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    KEYWORD         reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    LPAREN          reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    NUMBER          reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    FLOAT           reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    BOOLEAN         reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    CHAR            reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    STRING          reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    NEWLINE         reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
-    RCURLY          reduce using rule 17 (while_statement -> while_clause NEWLINE statement NEWLINE .)
+    BREAK           shift and go to state 6
+    CONTINUE        shift and go to state 7
+    IDENTIFIER      shift and go to state 8
+    KEYWORD         shift and go to state 12
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    STRING          shift and go to state 19
 
+    expression                     shift and go to state 9
+    statement_list                 shift and go to state 47
+    statement                      shift and go to state 35
+    assignment_statement           shift and go to state 2
+    if_statement                   shift and go to state 3
+    while_statement                shift and go to state 4
+    expression_statement           shift and go to state 5
+    if_clause                      shift and go to state 10
+    while_clause                   shift and go to state 11
+    literal                        shift and go to state 14
 
 state 45
 
-    (14) if_clause -> KEYWORD expression LCURLY NEWLINE . statement_list RCURLY
-    (15) statement_list -> . statement
-    (16) statement_list -> . statement_list statement
-    (1) statement -> . assignment_statement
-    (2) statement -> . if_statement
-    (3) statement -> . while_statement
-    (4) statement -> . expression_statement
-    (5) statement -> . BREAK
-    (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (15) statement_list -> statement_list NEWLINE statement .
 
-    BREAK           shift and go to state 6
-    CONTINUE        shift and go to state 7
-    ELIF            shift and go to state 8
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
+    END             reduce using rule 15 (statement_list -> statement_list NEWLINE statement .)
+    ELIF            reduce using rule 15 (statement_list -> statement_list NEWLINE statement .)
+    NEWLINE         reduce using rule 15 (statement_list -> statement_list NEWLINE statement .)
+    RCURLY          reduce using rule 15 (statement_list -> statement_list NEWLINE statement .)
 
-    expression                     shift and go to state 11
-    statement_list                 shift and go to state 47
-    statement                      shift and go to state 37
-    assignment_statement           shift and go to state 2
-    if_statement                   shift and go to state 3
-    while_statement                shift and go to state 4
-    expression_statement           shift and go to state 5
-    if_clause                      shift and go to state 12
-    while_clause                   shift and go to state 13
-    literal                        shift and go to state 16
 
 state 46
 
-    (11) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE . statement_list
-    (12) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE . statement_list NEWLINE ELSE NEWLINE statement_list
-    (15) statement_list -> . statement
-    (16) statement_list -> . statement_list statement
+    (9) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE . statement_list END
+    (10) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE . statement_list NEWLINE ELSE NEWLINE statement_list END
+    (14) statement_list -> . statement
+    (15) statement_list -> . statement_list NEWLINE statement
     (1) statement -> . assignment_statement
     (2) statement -> . if_statement
     (3) statement -> . while_statement
     (4) statement -> . expression_statement
     (5) statement -> . BREAK
     (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (7) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (8) if_statement -> . if_clause NEWLINE statement_list END
+    (9) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (11) while_statement -> . while_clause NEWLINE statement_list END
+    (17) expression_statement -> . expression NEWLINE
+    (12) if_clause -> . KEYWORD expression
+    (13) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> . KEYWORD expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
     BREAK           shift and go to state 6
     CONTINUE        shift and go to state 7
-    ELIF            shift and go to state 8
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
+    IDENTIFIER      shift and go to state 8
+    KEYWORD         shift and go to state 12
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    STRING          shift and go to state 19
 
-    if_clause                      shift and go to state 12
+    if_clause                      shift and go to state 10
     statement_list                 shift and go to state 48
-    statement                      shift and go to state 37
+    statement                      shift and go to state 35
     assignment_statement           shift and go to state 2
     if_statement                   shift and go to state 3
     while_statement                shift and go to state 4
     expression_statement           shift and go to state 5
-    expression                     shift and go to state 11
-    while_clause                   shift and go to state 13
-    literal                        shift and go to state 16
+    expression                     shift and go to state 9
+    while_clause                   shift and go to state 11
+    literal                        shift and go to state 14
 
 state 47
 
-    (14) if_clause -> KEYWORD expression LCURLY NEWLINE statement_list . RCURLY
-    (16) statement_list -> statement_list . statement
-    (1) statement -> . assignment_statement
-    (2) statement -> . if_statement
-    (3) statement -> . while_statement
-    (4) statement -> . expression_statement
-    (5) statement -> . BREAK
-    (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (13) if_clause -> KEYWORD expression LCURLY NEWLINE statement_list . RCURLY
+    (15) statement_list -> statement_list . NEWLINE statement
 
     RCURLY          shift and go to state 49
-    BREAK           shift and go to state 6
-    CONTINUE        shift and go to state 7
-    ELIF            shift and go to state 8
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
+    NEWLINE         shift and go to state 40
 
-    expression                     shift and go to state 11
-    statement                      shift and go to state 43
-    assignment_statement           shift and go to state 2
-    if_statement                   shift and go to state 3
-    while_statement                shift and go to state 4
-    expression_statement           shift and go to state 5
-    if_clause                      shift and go to state 12
-    while_clause                   shift and go to state 13
-    literal                        shift and go to state 16
 
 state 48
 
-    (11) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .
-    (12) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list . NEWLINE ELSE NEWLINE statement_list
-    (16) statement_list -> statement_list . statement
-    (1) statement -> . assignment_statement
-    (2) statement -> . if_statement
-    (3) statement -> . while_statement
-    (4) statement -> . expression_statement
-    (5) statement -> . BREAK
-    (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (9) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list . END
+    (10) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list . NEWLINE ELSE NEWLINE statement_list END
+    (15) statement_list -> statement_list . NEWLINE statement
 
-  ! shift/reduce conflict for NEWLINE resolved as shift
-  ! shift/reduce conflict for BREAK resolved as shift
-  ! shift/reduce conflict for CONTINUE resolved as shift
-  ! shift/reduce conflict for ELIF resolved as shift
-  ! shift/reduce conflict for ELSE resolved as shift
-  ! shift/reduce conflict for IDENTIFIER resolved as shift
-  ! shift/reduce conflict for KEYWORD resolved as shift
-  ! shift/reduce conflict for LPAREN resolved as shift
-  ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for FLOAT resolved as shift
-  ! shift/reduce conflict for BOOLEAN resolved as shift
-  ! shift/reduce conflict for CHAR resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
-    $end            reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .)
-    RCURLY          reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .)
+    END             shift and go to state 51
     NEWLINE         shift and go to state 50
-    BREAK           shift and go to state 6
-    CONTINUE        shift and go to state 7
-    ELIF            shift and go to state 8
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
 
-  ! ELIF            [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! BREAK           [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! CONTINUE        [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! ELSE            [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! IDENTIFIER      [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! KEYWORD         [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! LPAREN          [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! NUMBER          [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! FLOAT           [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! BOOLEAN         [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! CHAR            [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! STRING          [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-  ! NEWLINE         [ reduce using rule 11 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list .) ]
-
-    if_clause                      shift and go to state 12
-    statement                      shift and go to state 43
-    assignment_statement           shift and go to state 2
-    if_statement                   shift and go to state 3
-    while_statement                shift and go to state 4
-    expression_statement           shift and go to state 5
-    expression                     shift and go to state 11
-    while_clause                   shift and go to state 13
-    literal                        shift and go to state 16
 
 state 49
 
-    (14) if_clause -> KEYWORD expression LCURLY NEWLINE statement_list RCURLY .
+    (13) if_clause -> KEYWORD expression LCURLY NEWLINE statement_list RCURLY .
 
-    NEWLINE         reduce using rule 14 (if_clause -> KEYWORD expression LCURLY NEWLINE statement_list RCURLY .)
+    NEWLINE         reduce using rule 13 (if_clause -> KEYWORD expression LCURLY NEWLINE statement_list RCURLY .)
 
 
 state 50
 
-    (12) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE . ELSE NEWLINE statement_list
+    (10) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE . ELSE NEWLINE statement_list END
+    (15) statement_list -> statement_list NEWLINE . statement
+    (1) statement -> . assignment_statement
+    (2) statement -> . if_statement
+    (3) statement -> . while_statement
+    (4) statement -> . expression_statement
+    (5) statement -> . BREAK
+    (6) statement -> . CONTINUE
+    (7) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (8) if_statement -> . if_clause NEWLINE statement_list END
+    (9) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (11) while_statement -> . while_clause NEWLINE statement_list END
+    (17) expression_statement -> . expression NEWLINE
+    (12) if_clause -> . KEYWORD expression
+    (13) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> . KEYWORD expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-    ELSE            shift and go to state 51
+    ELSE            shift and go to state 52
+    BREAK           shift and go to state 6
+    CONTINUE        shift and go to state 7
+    IDENTIFIER      shift and go to state 8
+    KEYWORD         shift and go to state 12
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    STRING          shift and go to state 19
 
+    if_clause                      shift and go to state 10
+    statement                      shift and go to state 45
+    assignment_statement           shift and go to state 2
+    if_statement                   shift and go to state 3
+    while_statement                shift and go to state 4
+    expression_statement           shift and go to state 5
+    expression                     shift and go to state 9
+    while_clause                   shift and go to state 11
+    literal                        shift and go to state 14
 
 state 51
 
-    (12) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE . NEWLINE statement_list
+    (9) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list END .
 
-    NEWLINE         shift and go to state 52
+    $end            reduce using rule 9 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list END .)
+    END             reduce using rule 9 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list END .)
+    ELIF            reduce using rule 9 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list END .)
+    NEWLINE         reduce using rule 9 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list END .)
+    RCURLY          reduce using rule 9 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list END .)
 
 
 state 52
 
-    (12) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE . statement_list
-    (15) statement_list -> . statement
-    (16) statement_list -> . statement_list statement
-    (1) statement -> . assignment_statement
-    (2) statement -> . if_statement
-    (3) statement -> . while_statement
-    (4) statement -> . expression_statement
-    (5) statement -> . BREAK
-    (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (10) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE . NEWLINE statement_list END
 
-    BREAK           shift and go to state 6
-    CONTINUE        shift and go to state 7
-    ELIF            shift and go to state 8
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
+    NEWLINE         shift and go to state 53
 
-    if_clause                      shift and go to state 12
-    statement_list                 shift and go to state 53
-    statement                      shift and go to state 37
-    assignment_statement           shift and go to state 2
-    if_statement                   shift and go to state 3
-    while_statement                shift and go to state 4
-    expression_statement           shift and go to state 5
-    expression                     shift and go to state 11
-    while_clause                   shift and go to state 13
-    literal                        shift and go to state 16
 
 state 53
 
-    (12) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .
-    (16) statement_list -> statement_list . statement
+    (10) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE . statement_list END
+    (14) statement_list -> . statement
+    (15) statement_list -> . statement_list NEWLINE statement
     (1) statement -> . assignment_statement
     (2) statement -> . if_statement
     (3) statement -> . while_statement
     (4) statement -> . expression_statement
     (5) statement -> . BREAK
     (6) statement -> . CONTINUE
-    (7) statement -> . ELIF
-    (8) statement -> . ELSE
-    (9) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
-    (10) if_statement -> . if_clause NEWLINE statement_list
-    (11) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list
-    (12) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list
-    (17) while_statement -> . while_clause NEWLINE statement NEWLINE
-    (19) expression_statement -> . expression NEWLINE
-    (13) if_clause -> . KEYWORD expression
-    (14) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
-    (18) while_clause -> . KEYWORD expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . expression MATH_OP expression
-    (22) expression -> . expression COMPARISON_OP expression
-    (23) expression -> . expression LOGICAL_OP expression
-    (24) expression -> . literal
-    (25) literal -> . NUMBER
-    (26) literal -> . FLOAT
-    (27) literal -> . BOOLEAN
-    (28) literal -> . CHAR
-    (29) literal -> . IDENTIFIER
-    (30) literal -> . STRING
+    (7) assignment_statement -> . IDENTIFIER ASSIGN expression NEWLINE
+    (8) if_statement -> . if_clause NEWLINE statement_list END
+    (9) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list END
+    (10) if_statement -> . if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END
+    (11) while_statement -> . while_clause NEWLINE statement_list END
+    (17) expression_statement -> . expression NEWLINE
+    (12) if_clause -> . KEYWORD expression
+    (13) if_clause -> . KEYWORD expression LCURLY NEWLINE statement_list RCURLY
+    (16) while_clause -> . KEYWORD expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . expression MATH_OP expression
+    (20) expression -> . expression COMPARISON_OP expression
+    (21) expression -> . expression LOGICAL_OP expression
+    (22) expression -> . literal
+    (23) literal -> . NUMBER
+    (24) literal -> . FLOAT
+    (25) literal -> . BOOLEAN
+    (26) literal -> . CHAR
+    (27) literal -> . IDENTIFIER
+    (28) literal -> . STRING
 
-  ! shift/reduce conflict for BREAK resolved as shift
-  ! shift/reduce conflict for CONTINUE resolved as shift
-  ! shift/reduce conflict for ELIF resolved as shift
-  ! shift/reduce conflict for ELSE resolved as shift
-  ! shift/reduce conflict for IDENTIFIER resolved as shift
-  ! shift/reduce conflict for KEYWORD resolved as shift
-  ! shift/reduce conflict for LPAREN resolved as shift
-  ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for FLOAT resolved as shift
-  ! shift/reduce conflict for BOOLEAN resolved as shift
-  ! shift/reduce conflict for CHAR resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
-    $end            reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .)
-    NEWLINE         reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .)
-    RCURLY          reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .)
     BREAK           shift and go to state 6
     CONTINUE        shift and go to state 7
-    ELIF            shift and go to state 8
-    ELSE            shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    KEYWORD         shift and go to state 14
-    LPAREN          shift and go to state 15
-    NUMBER          shift and go to state 17
-    FLOAT           shift and go to state 18
-    BOOLEAN         shift and go to state 19
-    CHAR            shift and go to state 20
-    STRING          shift and go to state 21
+    IDENTIFIER      shift and go to state 8
+    KEYWORD         shift and go to state 12
+    LPAREN          shift and go to state 13
+    NUMBER          shift and go to state 15
+    FLOAT           shift and go to state 16
+    BOOLEAN         shift and go to state 17
+    CHAR            shift and go to state 18
+    STRING          shift and go to state 19
 
-  ! ELIF            [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! BREAK           [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! CONTINUE        [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! ELSE            [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! IDENTIFIER      [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! KEYWORD         [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! LPAREN          [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! NUMBER          [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! FLOAT           [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! BOOLEAN         [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! CHAR            [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-  ! STRING          [ reduce using rule 12 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list .) ]
-
-    if_clause                      shift and go to state 12
-    statement                      shift and go to state 43
+    if_clause                      shift and go to state 10
+    statement_list                 shift and go to state 54
+    statement                      shift and go to state 35
     assignment_statement           shift and go to state 2
     if_statement                   shift and go to state 3
     while_statement                shift and go to state 4
     expression_statement           shift and go to state 5
-    expression                     shift and go to state 11
-    while_clause                   shift and go to state 13
-    literal                        shift and go to state 16
+    expression                     shift and go to state 9
+    while_clause                   shift and go to state 11
+    literal                        shift and go to state 14
+
+state 54
+
+    (10) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list . END
+    (15) statement_list -> statement_list . NEWLINE statement
+
+    END             shift and go to state 55
+    NEWLINE         shift and go to state 40
+
+
+state 55
+
+    (10) if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END .
+
+    $end            reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END .)
+    END             reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END .)
+    ELIF            reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END .)
+    NEWLINE         reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END .)
+    RCURLY          reduce using rule 10 (if_statement -> if_clause NEWLINE statement_list ELIF NEWLINE statement_list NEWLINE ELSE NEWLINE statement_list END .)
+
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for ELIF in state 36 resolved as shift
-WARNING: shift/reduce conflict for BREAK in state 36 resolved as shift
-WARNING: shift/reduce conflict for CONTINUE in state 36 resolved as shift
-WARNING: shift/reduce conflict for ELSE in state 36 resolved as shift
-WARNING: shift/reduce conflict for IDENTIFIER in state 36 resolved as shift
-WARNING: shift/reduce conflict for KEYWORD in state 36 resolved as shift
-WARNING: shift/reduce conflict for LPAREN in state 36 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 36 resolved as shift
-WARNING: shift/reduce conflict for FLOAT in state 36 resolved as shift
-WARNING: shift/reduce conflict for BOOLEAN in state 36 resolved as shift
-WARNING: shift/reduce conflict for CHAR in state 36 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 36 resolved as shift
-WARNING: shift/reduce conflict for NEWLINE in state 42 resolved as shift
-WARNING: shift/reduce conflict for NEWLINE in state 48 resolved as shift
-WARNING: shift/reduce conflict for BREAK in state 48 resolved as shift
-WARNING: shift/reduce conflict for CONTINUE in state 48 resolved as shift
-WARNING: shift/reduce conflict for ELIF in state 48 resolved as shift
-WARNING: shift/reduce conflict for ELSE in state 48 resolved as shift
-WARNING: shift/reduce conflict for IDENTIFIER in state 48 resolved as shift
-WARNING: shift/reduce conflict for KEYWORD in state 48 resolved as shift
-WARNING: shift/reduce conflict for LPAREN in state 48 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 48 resolved as shift
-WARNING: shift/reduce conflict for FLOAT in state 48 resolved as shift
-WARNING: shift/reduce conflict for BOOLEAN in state 48 resolved as shift
-WARNING: shift/reduce conflict for CHAR in state 48 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 48 resolved as shift
-WARNING: shift/reduce conflict for BREAK in state 53 resolved as shift
-WARNING: shift/reduce conflict for CONTINUE in state 53 resolved as shift
-WARNING: shift/reduce conflict for ELIF in state 53 resolved as shift
-WARNING: shift/reduce conflict for ELSE in state 53 resolved as shift
-WARNING: shift/reduce conflict for IDENTIFIER in state 53 resolved as shift
-WARNING: shift/reduce conflict for KEYWORD in state 53 resolved as shift
-WARNING: shift/reduce conflict for LPAREN in state 53 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 53 resolved as shift
-WARNING: shift/reduce conflict for FLOAT in state 53 resolved as shift
-WARNING: shift/reduce conflict for BOOLEAN in state 53 resolved as shift
-WARNING: shift/reduce conflict for CHAR in state 53 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 53 resolved as shift
-WARNING: reduce/reduce conflict in state 29 resolved using rule (if_clause -> KEYWORD expression)
-WARNING: rejected rule (while_clause -> KEYWORD expression) in state 29
+WARNING: reduce/reduce conflict in state 27 resolved using rule (if_clause -> KEYWORD expression)
+WARNING: rejected rule (while_clause -> KEYWORD expression) in state 27
 WARNING: Rule (while_clause -> KEYWORD expression) is never reduced
