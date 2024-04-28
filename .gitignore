@@ -1,5 +1,5 @@
 *.out
-__pycachce__/
+__pycache__/
 parsetab.py
 archive/
 
