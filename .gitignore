@@ -1,0 +1,9 @@
+*.out
+__pycachce__/
+parsetab.py
+archive/
+
+
+
+
+
