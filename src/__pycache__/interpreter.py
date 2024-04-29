@@ -124,10 +124,13 @@ class Interpreter:
 
     
     def to_octal(self, number):
-        # Return the number as is without converting to octal
-        var = oct(number)[2:]
-        x = int(var)
-        return x
+        # Check if the number is an integer
+        if isinstance(number, int):
+            # Convert the integer to octal
+            return int(oct(number)[2:])
+        else:
+            # If it's not an integer, return the floating-point number
+            return number
 
     def perform_operation(self, operator, left, right):
         # Perform arithmetic and comparison operations in base 10
