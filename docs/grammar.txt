@@ -1,0 +1,85 @@
+<start> ::= <expression>
+
+<expression> ::= <expression> '+' <term>
+               | <expression> '-' <term>
+               | <term>
+
+<term> ::= <term> '*' <factor>
+         | <term> '/' <factor>
+         | <factor>
+
+<factor> ::= <number>
+           | '(' <expression> ')'
+           | <identifier>
+           | <expression> '>' <term>
+           | <expression> '>=' <term>
+           | <expression> '<' <term>
+           | <for-loop>
+           | <while-loop>
+           | <if-else>
+           | <if>
+           | <function-call>
+           | <print>
+           | <return>
+           | <increment>
+           | <decrement>
+           | <assignment>
+           | <octal-number>
+
+<for-loop> ::= 'frz' '(' <identifier> '=' <expression> ';' <expression> ';' <expression> ')' '{' <multiline-code> '}'
+            | 'frz' '(' <identifier> '=' <expression> ';' <expression> ';' <expression> ')' '{' <code-block> '}'
+            | 'frz' '(' <identifier> '=' <expression> ';' <expression> ';' <expression> ')' '{' '}'
+            | 'frz' '(' <identifier> '=' <expression> ';' <expression> ';' <expression> ')' '{' <multiline-code> '}' <code-block>
+
+<while-loop> ::= 'whilk' '(' <expression> ')' '{' <multiline-code> '}'
+               | 'whilk' '(' <expression> ')' '{' <multiline-code> '}' NEWLINE
+
+<multiline-code> ::= <expression>
+                    | <expression> NEWLINE <multiline-code>
+                    | empty
+
+<if> ::= 'ilf' '(' <expression> ')' '{' <expression> '}'
+       | 'ilf' '(' <expression> '&&' <expression> ')' '{' <expression> '}'
+       | 'ilf' '(' <expression> '||' <expression> ')' '{' <expression> '}'
+
+<if-else> ::= 'ilf' '(' <expression> ')' '{' <expression> '}' 'elz' '{' <expression> '}'
+            | 'ilf' '(' <expression> '&&' <expression> ')' '{' <expression> '}' 'elz' '{' <expression> '}'
+            | 'ilf' '(' <expression> '||' <expression> ')' '{' <expression> '}' 'elz' '{' <expression> '}'
+
+<function-call> ::= 'florp_call' <identifier> '(' <function-call-args> ')'
+
+<function-call-args> ::= <expression> ',' <function-call-args>
+                        | <expression>
+
+<function> ::= 'florp' <identifier> '(' <parameter-list> ')' '{' <expression> '}'
+             | 'florp' <identifier> '(' <parameter-list> ')' '{' <statement> '}'
+
+<parameter-list> ::= <identifier> ',' <parameter-list>
+                    | <identifier>
+                    | empty
+
+<print> ::= 'plitz' '(' <expression> ')' <multiline-code>
+          | 'plitz' '(' <string> ')' <multiline-code>
+
+<return> ::= 'return' <expression>
+
+<increment> ::= <identifier> '++'
+
+<decrement> ::= <identifier> '--'
+
+<assignment> ::= <identifier> '=' <expression> <multiline-code>
+
+<octal-number> ::= OCTAL_NUMBER
+
+<statement> ::= <expression>
+              | ASSIGN
+              | empty
+
+<expression-newline> ::= NEWLINE <expression>
+
+<expression-newline-empty> ::= NEWLINE
+
+<expression-empty> ::= empty
+
+<empty> ::=
+
