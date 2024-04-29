@@ -2,37 +2,37 @@ import ply.lex as lex
 
 # List of token names
 tokens = (
-    'NUMBER',   # this does not get alien name
-    'PLUS',    # this does not get alien name
-    'MINUS',    # this does not get alien name
-    'TIMES',        # this does not get alien name
-    'DIVIDE',   # this does not get alien name  
-    'LPAREN',  # this does not get alien name
-    'RPAREN',   # this does not get alien name
-    'OCTAL_NUMBER', # this does not get alien name
-    'KEYWORD',  # this does not get alien name
-    'NEWLINE',  # this does not get alien name
-    'COMMENT',  # this does not get alien name
-    'STRING',   # this does not get alien name
-    'GREATER_THAN', # this does not get alien name
-    'LESS_THAN',    # this does not get alien name
-    'GREATER_THAN_EQUAL',   # this does not get alien name
-    'LESS_THAN_EQUAL',  # this does not get alien name
-    'EQUAL_TO', # this does not get alien name
-    'NOT_EQUAL_TO', # this does not get alien name
-    'AND',  
-    'OR',
-    'NOT',
-    'LCURLY',   # this does not get alien name
-    'RCURLY',   # this does not get alien name
-    'SEMICOLON',    # this does not get alien name
-    'COMMA',    # this does not get alien name
-    'DOT',  # this does not get alien name
-    'COLON',    # this does not get alien name
-    'ARROW',    # this does not get alien name
-    'HASH', # this does not get alien name
-    'AT',   # this does not get alien name
-    'DOLLAR',   # this does not get alien name
+    'NUMBER',                                   # this does not get alien name
+    'PLUS',                                     # this does not get alien name
+    'MINUS',                                    # this does not get alien name
+    'TIMES',                                    # this does not get alien name
+    'DIVIDE',                                   # this does not get alien name  
+    'LPAREN',                                   # this does not get alien name
+    'RPAREN',                                   # this does not get alien name
+    'OCTAL_NUMBER',                             # this does not get alien name
+    'KEYWORD',                                  # this does not get alien name
+    'NEWLINE',                                  # this does not get alien name
+    'COMMENT',                                  # this does not get alien name
+    'STRING',                                   # this does not get alien name
+    'GREATER_THAN',                             # this does not get alien name
+    'LESS_THAN',                                # this does not get alien name
+    'GREATER_THAN_EQUAL',                       # this does not get alien name
+    'LESS_THAN_EQUAL',                          # this does not get alien name
+    'EQUAL_TO',                                 # this does not get alien name
+    'NOT_EQUAL_TO',                             # this does not get alien name
+    'AND',                                      # this does not get alien name
+    'OR',                                       # this does not get alien name
+    'NOT',                                      # this does not get alien name
+    'LCURLY',                                   # this does not get alien name
+    'RCURLY',                                   # this does not get alien name
+    'SEMICOLON',                                # this does not get alien name
+    'COMMA',                                    # this does not get alien name
+    'DOT',                                      # this does not get alien name
+    'COLON',                                    # this does not get alien name
+    'ARROW',                                    # this does not get alien name
+    'HASH',                                     # this does not get alien name
+    'AT',                                       # this does not get alien name
+    'DOLLAR',                                   # this does not get alien name
     'PERCENT',
     'CARET',
     'AMPERSAND',
@@ -63,23 +63,23 @@ tokens = (
     'DECREMENT',
     'ELLIPSIS',
     'ARROW_STAR',
-    'DOT_STAR', # this does not get alien name
+    'DOT_STAR',
     
-    'PLITZ',  # New token for print statements
-    'IDENTIFIER',  # New token for identifiers
-    'ILF',          # 'if' keyword
-    'ELZ',         # 'else' keyword
-    'WHILK',       # 'while' keyword
-    'FRZ',         # 'for' keyword
-    'RETURN',
-    'ELIL',     # 'elif' keyword
-    'FLORP',
-    'statements',
-    'ASSIGN',
-    'LBRACKET',
-    'RBRACKET',
-    'MODULO',
-    'QUOTE',
+    'PLITZ',                # 'print' keyword
+    'IDENTIFIER',           # identifier token
+    'ILF',                  # 'if' keyword
+    'ELZ',                  # 'else' keyword
+    'WHILK',                # 'while' keyword
+    'FRZ',                  # 'for' keyword
+    'RETURN',               # 'return' keyword
+    'ELIL',                 # 'elif' keyword
+    'FLORP',                # 'function' keyword
+    'statements',           # 'statements' keyword
+    'ASSIGN',               # '='
+    'LBRACKET',             # '['
+    'RBRACKET',             # ']'
+    'MODULO',               # '%'
+    'QUOTE',                # '"'
 
 )
 
@@ -90,7 +90,6 @@ t_TIMES = r'\*'
 t_DIVIDE = r'/'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-# t_EQUALS = r'='
 t_GREATER_THAN = r'>'
 t_LESS_THAN = r'<'
 t_GREATER_THAN_EQUAL = r'>='
@@ -131,7 +130,6 @@ t_AMPERSAND_EQUALS = r'&='
 t_PIPE_EQUALS = r'\|='
 t_LEFT_SHIFT_EQUALS = r'<<='
 t_RIGHT_SHIFT_EQUALS = r'>>='
-
 t_LEFT_SHIFT = r'<<'
 t_RIGHT_SHIFT = r'>>'
 t_INCREMENT = r'\+\+'
@@ -148,7 +146,7 @@ t_FRZ = r'[Ff][Rr][Zz]'
 t_QUOTE = r'\"'
 
 
-def t_WHILK(t):
+def t_WHILK(t): # rule for while keyword
     r'whilk'
     return t
 

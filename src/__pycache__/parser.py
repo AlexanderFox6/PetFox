@@ -13,10 +13,6 @@ def p_expression_minus(p):
     'expression : expression MINUS term'
     p[0] = ('MINUS', p[1], p[3])
     
-def p_expression_term(p):
-    'expression : term'
-    p[0] = p[1]
-    
 def p_term_times(p):
     'term : term TIMES factor'
     p[0] = ('TIMES', p[1], p[3])
@@ -25,6 +21,12 @@ def p_term_divide(p):
     'term : term DIVIDE factor'
     p[0] = ('DIVIDE', p[1], p[3])
     
+    
+def p_expression_term(p):
+    'expression : term'
+    p[0] = p[1]
+    
+
 def p_term_factor(p):
     'term : factor'
     p[0] = p[1]
@@ -49,7 +51,6 @@ def p_expression_greater_than_equal(p):
     'expression : expression GREATER_THAN_EQUAL term'
     p[0] = ('GREATER_THAN_EQUAL', p[1], p[3])
 
-    
 def p_expression_less_than(p):
     'expression : expression LESS_THAN term'
     p[0] = ('LESS_THAN', p[1], p[3])
@@ -67,9 +68,6 @@ def p_expression_for_loop(p):
         p[0] = ('frz', p[3], p[5], p[7], p[9], p[12], p[13], p[14])
     elif len(p) == 12:
         p[0] = ('frz', p[3], p[5], p[7], p[9], p[12], p[13], p[14])
-
-
-
 
 
 def p_expression_while_loop(p):
@@ -117,11 +115,16 @@ def p_expression_not_equal_to(p):
     'expression : expression NOT_EQUAL_TO term'
     p[0] = ('NOT_EQUAL_TO', p[1], p[3])
     
+# adding && and || logic for ilf elz
 def p_expression_ilf_elz(p):
     '''
     expression : ILF LPAREN expression RPAREN LCURLY expression RCURLY ELZ LCURLY expression RCURLY
+                | ILF LPAREN expression AND expression RPAREN LCURLY expression RCURLY ELZ LCURLY expression RCURLY
+                | ILF LPAREN expression OR expression RPAREN LCURLY expression RCURLY ELZ LCURLY expression RCURLY
+                
     '''
     p[0] = ('ilf-elz', p[3], p[6], p[10])
+    p[0] = ('ilf-elz', ('and' if p[4] == '&&' else 'or'), p[3], p[5], p[8], p[12])
     
 # allow for and/or logic to work for ilf statements
 def p_expression_ilf(p):
@@ -140,6 +143,7 @@ def p_expression_ilf(p):
 def p_expression_ilf_elil_elz(p):
     '''
     expression : ILF LPAREN expression RPAREN LCURLY expression RCURLY ELIL LPAREN expression RPAREN LCURLY expression RCURLY ELZ LCURLY expression RCURLY
+                
     '''
     p[0] = ('ilf-elil-elz', [(p[3], p[6]), (p[10], p[13])], p[17])
     
@@ -151,6 +155,7 @@ def p_expression_or(p):
 def p_expression_and(p):
     'expression : expression AND expression'
     p[0] = ('&&', p[1], p[3])
+
 
 
 def p_expression_not(p):
@@ -319,7 +324,7 @@ parser = yacc.yacc()
 
 # example code to test and/or/not
 data = '''
-ilf (5>3 && 3<5) { plitz("hello") }
+ilf (5>3 || 3<5) { plitz("hello") } elz { plitz("world") }
 '''
 result = parser.parse(data)
 

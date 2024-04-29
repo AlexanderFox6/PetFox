@@ -113,18 +113,14 @@ class Interpreter:
                         return self.execute(block)
                 return self.execute(node[2])
             elif node[0] == '&&':
-                left = self.execute(node[1])
-                right = self.execute(node[2])
-                return left and right
+                return self.execute(node[1]) and self.execute(node[2])
             elif node[0] == '||':
-                left = self.execute(node[1])
-                right = self.execute(node[2])
-                return left or right
-
+                return self.execute(node[1]) or self.execute(node[2])
 
         elif isinstance(node, str):
             return self.variables.get(node, None)
         return node
+
 
     
     def to_octal(self, number):
