@@ -29,7 +29,7 @@ PetFox is using PLY-3.11 for it's lexical analysis. PLY is python based.
 ## Code Example:
 ```
 florp message(){
-    print('A message for you')
+    plitz('A message for you')
 }
 
 florp add(num1, num2){
