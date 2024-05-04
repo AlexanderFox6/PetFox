@@ -6,13 +6,18 @@ Welcome to the PetFox programming language repository. PetFox is designed to hel
 
 Visit the [Language Documentation Wiki](https://github.com/AlexanderFox6/PetFox/wiki/PetFox-Documentation).
 
-## PetFox Tokens
+## PetFox Lexer
 
-Visit the [PetFox Language Tokens](https://github.com/AlexanderFox6/PetFox/wiki/Tokens).
+Visit the [PetFox Language Lexer](https://github.com/AlexanderFox6/PetFox/wiki/Lexer).
 
-## Lexer with PLY-3.11
+## PetFox Parser
+
+Visit the [PetFox Language Parser](https://github.com/AlexanderFox6/PetFox/wiki/Parser).
+
+## PetFox is made with PLY-3.11 (Python Lex Yacc)
 
 PetFox is using PLY-3.11 for it's lexical analysis. PLY is python based.
+
 
 ## Repository Structure
 
@@ -20,4 +25,18 @@ PetFox is using PLY-3.11 for it's lexical analysis. PLY is python based.
 - `docs/`: Includes documents like pictures and project slide shows.
 - `examples/`: Contains example or demonstration code for PetFox
 - `archive/`: Contains old programs or unused files
+
+## Code Example:
+```
+florp message(){
+    print('A message for you')
+}
+
+florp add(num1, num2){
+    return num1 + num2
+}
+
+message()
+add(1,2)
+```
 
