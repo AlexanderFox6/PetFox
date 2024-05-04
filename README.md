@@ -2,9 +2,9 @@
 
 Welcome to the PetFox programming language repository. PetFox is designed to help our lesser-evolved Martian buddies take the next step in their programming evolution. PetFox is named after the creators Nolan Pettit and Alexander Fox.
 
-## Language Documentation
+## Language WiKi
 
-Visit the [Language Documentation Wiki](https://github.com/AlexanderFox6/PetFox/wiki/PetFox-Documentation).
+Visit the [PetFox Language Wiki](https://github.com/AlexanderFox6/PetFox/wiki/Home).
 
 ## PetFox Lexer
 
@@ -13,6 +13,10 @@ Visit the [PetFox Language Lexer](https://github.com/AlexanderFox6/PetFox/wiki/L
 ## PetFox Parser
 
 Visit the [PetFox Language Parser](https://github.com/AlexanderFox6/PetFox/wiki/Parser).
+
+## Language Documentation
+
+Visit the [Language Documentation Page](https://github.com/AlexanderFox6/PetFox/wiki/PetFox-Documentation).
 
 ## PetFox is made with PLY-3.11 (Python Lex Yacc)
 
